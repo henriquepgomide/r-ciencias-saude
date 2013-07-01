@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introdução ao R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introdução ao R">
+  <meta name="author" content="Henrique Pinto Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <hgroup class="auto-fadein">
+        <h1>Introdução ao R</h1>
+        <h2>Curso de estatística aplicada para Psicologia e Ciências da saúde</h2>
+        <p>Henrique Pinto Gomide<br/>Mestrando em Psicologia - UFJF / Pesquisador CREPEIA</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Por que o R?</h2>
+  </hgroup>
+  <article>
+    <p>Vantagens</p>
+
+<ul>
+<li>Gratuito,código-aberto e multiplataforma</li>
+<li>Padrão ouro em pesquisas reprodutíveis</li>
+<li>De estatísticos para estatísticos</li>
+<li>Maior velocidade na implementação de métodos de análise</li>
+<li>Documentação com exemplos práticos e claros</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Por que o R?</h2>
+  </hgroup>
+  <article>
+    <p>Desvantagens</p>
+
+<ul>
+<li>Exige maior tempo para aprendizado que os programas clicar-e-apontar</li>
+<li>De estatísticos para estatísticos</li>
+<li>Não é uma solução para todos os problemas do mundo!</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Por que aprender o R</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>R é uma linguagem de programação,</li>
+<li>Existem ambientes apontar-e-clicar para o R como o <a href="http://www.rcommander.com/">RCommander</a>,</li>
+<li>Rode de qualquer computador, sem pagar nada.</li>
+<li>Relatórios com <a href="http://www.stat.uni-muenchen.de/%7Eleisch/Sweave/">Sweave</a>, <a href="http://www.rstudio.com/ide/docs/authoring/using_markdown">Rmarkdown</a>...</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Por que aprender o R?</h2>
+  </hgroup>
+  <article>
+    <p><img src="http://r4stats.files.wordpress.com/2012/04/fig_7a_scholarlyimpactbig61.png" alt="Número de artigos citando os programas de análise de dados"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Por que aprender o R?</h2>
+  </hgroup>
+  <article>
+    <p><img src="http://r4stats.files.wordpress.com/2012/04/fig_1d_stackoverflowbyweek.png" alt="Busca em fórums Stack Overflow"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>R para iniciantes</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>No curso usaremos o <a href="http://www.rstudio.com/ide/download/">RStudio</a> e o <a href="http://www.rcommander.com/">RCommander</a></li>
+<li><a href="http://www.rstudio.com/ide/download/">RStudio</a> - Deixar sua vida mais fácil para gerenciar pacotes, salvar gráficos e fazer análises</li>
+<li><a href="http://www.rcommander.com/">RCommander</a>r - Apontar e clicar para rodas as análises estatísticas</li>
+<li>Diversos tutoriais e formas de analisar dados serão divulgados para facilitar sua vida.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Como instalar</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>R - Instale o R <a href="http://cran.fiocruz.br/">aqui</a>.</li>
+<li>Rstudio - Clique no botão &quot;Download Rstudio Desktop&quot; neste <a href="http://www.rstudio.com/ide/download/">link</a></li>
+<li>Rcommander - Abra o Rstudio, vá em &quot;tools  &gt; Install Packages&quot; e digite &quot;Rcmdr&quot;, Dê ok. Clique em instalar</li>
+<li><a href="https://www.youtube.com/watch?v=-SH3qHL2f1g">Vídeo de instalação</a> no youtube.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Referências e dicas</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li><a href="http://r4stats.com/articles/popularity/">Popularidade do R</a></li>
+<li><a href="http://www.personality-project.org/">R para Psicologia</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Agradecimentos</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>R Core Development Team</li>
+<li>Ramnath Vaidyanathan - <a href="https://github.com/ramnathv">https://github.com/ramnathv</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Making Off - Ciência e Filosofia da Medida</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Making Off - Ciência e Filosofia da Medida">
+  <meta name="author" content="Daniele Trindade e Júlia Carelli">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>Making Off - Ciência e Filosofia da Medida</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Daniele Trindade e Júlia Carelli<br/>PET-Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Definições de Ciência</h2>
+  </hgroup>
+  <article>
+    <p>Ciência </p>
+
+<ul>
+<li>Popper - Como deveria ser</li>
+<li>Khun - Como realmente é</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Popper</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Ciência como processo de conjecturas e refutações</li>
+<li>Boas teorias são refutáveis</li>
+<li>&quot;Para serem classificadas como científicas, as assertivas ou sistemas de assertivas devem ser capazes de entrar em conflito com observações possíveis ou concebíveis.&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Khun</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Ciência se desenvolve através de revoluções</li>
+<li>Paradigma</li>
+</ul>
+
+<p>Outras definições</p>
+
+<ul>
+<li>Mario Bunge</li>
+<li>Lakatos</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>O que não vamos abandonar</h2>
+  </hgroup>
+  <article>
+    <p>Lógica e Razão</p>
+
+<ul>
+<li>Tentaremos utilizá-las durante todo o curso. Ex: Primatas são capazes de usar a linguagem. Bozo, o chimpanzé, é um primata. Logo... </li>
+</ul>
+
+<p>Empirismo</p>
+
+<ul>
+<li>Processo de conhecer coisas através de nossas experiências de mundo.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>O que não vamos abandonar (cont.)</h2>
+  </hgroup>
+  <article>
+    <p>Determinismo</p>
+
+<ul>
+<li>Conseguimos estabelecer relações de causa e efeito em fenômenos da natureza. Para nosso caso, determinismo estatístico.</li>
+</ul>
+
+<p>Objetividade</p>
+
+<ul>
+<li>A natureza dos fenômenos pode ser verificada através de observações sistemáticas.</li>
+</ul>
+
+<p>Desenvolvimento de teorias</p>
+
+<ul>
+<li>Estas podem ser formadas através do método indutivo e dedutivo.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Método indutivo</h2>
+  </hgroup>
+  <article>
+    <p>Conclusões gerais a partir de premissas individuais
+A conclusão não é contida nas premissas</p>
+
+<ol>
+<li>Maluf, político, tem dinheiro em paraísos fiscais</li>
+<li>José Serra, político, tem dinheiro em paraísos fiscais</li>
+<li>Todos os políticos têm dinheiro em paraísos fiscais.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Método dedutivo</h2>
+  </hgroup>
+  <article>
+    <p>A conclusão é derivada das premissas.</p>
+
+<ol>
+<li>Todo mamífero tem coração</li>
+<li>O ser humano é um mamífero</li>
+<li>Logo, o ser humano tem coração.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>As limitações da ciência</h2>
+  </hgroup>
+  <article>
+    <p>Objetividade</p>
+
+<ul>
+<li>Nem todos os fenômenos podem ser observados objetivamente</li>
+</ul>
+
+<p>Generalização</p>
+
+<ul>
+<li>Metafóras dos Cisnes. Exemplo do método indutivo</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>A pesquisa em ciências da saúde</h2>
+  </hgroup>
+  <article>
+    <p>Objetivos</p>
+
+<ul>
+<li>Descrever fenômenos</li>
+<li>Predizer fenômenos</li>
+<li>Explicar fenômenos</li>
+<li><em>Controlar</em> fenômenos</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Estatística em ciências da saúde</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Descrição - medidas de tendência central e variação</li>
+<li>Predição - métodos de regressão</li>
+<li>Explicação - análise de equações estruturais</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>As medidas em ciências do comportamento</h2>
+  </hgroup>
+  <article>
+    <p>Para ser ciência, deve haver mensuração e uso da matemática.</p>
+
+<p>Medida por lei - Stevens</p>
+
+<ul>
+<li>&quot;Mede-se por lei quando se quer demonstrar empiricamente que dois ou mais atributos estruturalmente diferentes mantêm entre si relações sistemáticas&quot;.</li>
+</ul>
+
+<p>Ex.</p>
+
+<ul>
+<li>Fechner e a intensidade das sensações</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>As medidas ciências do comportamento (cont.)</h2>
+  </hgroup>
+  <article>
+    <p>O conceito mais comumente aceito pelos psicólogos de mensuração <strong>não</strong> é o mesmo aceito pelos físicos, químicos, etc.
+Exercício:</p>
+
+<ul>
+<li>Um estudante mede a largura da sala de aula com uma trena. A largura é de de 10 metros e o comprimento é de 2,5 vezes maior que a largura.</li>
+<li>A definição &quot;Atribuir números a objetos ou eventos de acordo com uma regra&quot; se aplica a este caso?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Teorias de medida</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Stevens - Medir é atribuir números a coisas de acordo com regras</li>
+<li>Teoria Clássica - Medir envolve a descoberta do numero e a magnitude do numero em relação aos outros componentes do objeto em questão. A atribuição do número não representa todo o objeto.<br></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Fud**, acabou o curso?</h2>
+  </hgroup>
+  <article>
+    <p>Não, se...</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Problemas em mensurar conceitos psicológicos</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>O problema da representação ou isomorfismo - Vale a pena usar números?</li>
+<li>O problema da unicidade da representação - Vale a pena só usar números?</li>
+<li>O problema do erro da medida - Observou, errou!</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Axiomas da &#39;medida&#39;</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Identidade - Define o conceito de igualdade</li>
+<li>Ordem - Todo número é diferente do outro por quantidade</li>
+<li>Aditividade - Os números podem ser somados (e também multiplicados...)</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Níveis de medida</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Nominal - Os números servem somente para identificar elementos</li>
+<li>Ordinal - Ordena os objetos segudo o grau que eles possuem um dado atributo</li>
+<li>Intervalar - É possível quantificar distâncias entre números</li>
+<li>Razão - Existe um zero e é possível quantificar distâncias</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Resumão</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Para ser científica, uma teoria deve ser falseável.</li>
+<li>A ciência deveria avançar com refutações de conhecimentos estabelecidos, mas nem sempre é assim.</li>
+<li>Ismos da ciência: determinismo (estatístico), empirismo, objetividade, lógica</li>
+<li>Medir para ciências humanas é uma coisa diferente para as ciências exatas</li>
+<li>Antes de medir, justifique-se</li>
+<li>Níveis de medidas - nominal, ordinal, intervalar e razão</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Referências selecionadas</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Popper, K. R. (2008). Conjecturas e Refutações. (S. Bath, Trad.). Brasilia: Editora Universidade de Brasília.</li>
+<li>Pasquali, L. (2003). Psicometria: teoria dos testes na psicologia e na educação. Petrópolis: Vozes.</li>
+<li>Michell, J. (1999). Measurement in psychology critical history of a methodological concept. New York: Cambridge University Press.</li>
+<li>An introduction to psychometric theory with applications in R <a href="http://www.personality-project.org/r/book/">http://www.personality-project.org/r/book/</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
