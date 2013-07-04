@@ -31,6 +31,9 @@
     <!-- TITLE SLIDE -->
     <!-- Should I move this to a Local Layout File? -->
     <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
       <hgroup class="auto-fadein">
         <h1>Por que diabos eu deveria estudar estatística?</h1>
         <h2>Curso Ninja de Estatística em R para Ciências da Saúde</h2>
@@ -41,7 +44,7 @@
     <!-- SLIDES -->
       <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Por que diabos você deveria estudar estatística?</h2>
+    <h2>Por que diabos você deveria estudar estatística com R?</h2>
   </hgroup>
   <article>
     <ul>
@@ -57,11 +60,16 @@
 
       <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Parecendo um doido perante seus colegas</h2>
+    <h2>Parecendo um doido</h2>
   </hgroup>
   <article>
     <pre><code class="r">require(&quot;mvtnorm&quot;)
-# ----Simulação de diferentes coeficientes de regressão#### cor(a) = 0,30;
+</code></pre>
+
+<pre><code>## Loading required package: mvtnorm
+</code></pre>
+
+<pre><code class="r"># ----Simulação de diferentes coeficientes de regressão#### cor(a) = 0,30;
 # cor(b) = 0.60; cor(c) = 0.99
 set.seed(1)
 a &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.3 * sqrt(50), 
@@ -80,7 +88,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
 
       <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Parecendo um doido</h2>
+    <h2>Parecendo um doido (cont.)</h2>
   </hgroup>
   <article>
     <p><center>
@@ -93,6 +101,78 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
 </slide>
 
       <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Parecendo um doido (mas empregado)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Nós nunca tivemos tanta informação sobre tudo.</li>
+<li>Precisamos analisá-la e entendê-la.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Exemplo Caso Target</h2>
+  </hgroup>
+  <article>
+    <p><center>
+<img src="assets/img/walter-mercado.png" alt="Walter Mercado">
+</center>
+<a href="http://goo.gl/EaJHV">Link</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Auxiliar seus pacientes a tomarem decisão sobre tratamentos</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Decisões sobre tratamentos são tomadas com base em estatística.</li>
+<li>Sejam eles avaliados em estudos observacionais, clínicos randomizados, metanálises, etc.</li>
+<li>Hein?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>O outro caminho...</h2>
+  </hgroup>
+  <article>
+    <p>(Kypri et al., 2013)
+<center>
+<img src="assets/img/abstract.png" alt="abstract">
+</center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>O outro caminho... (cont.)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Boa parte dos profissionais pulam a estatística e recorrem a livros textos e a autores famosos.</li>
+<li>Ou a jornais, revistas, televisão...</li>
+<li>Ou a literatura científica! - Nosso porto seguro?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Alerta! Problemas na literatura científica</h2>
   </hgroup>
@@ -109,7 +189,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5" style="background:;">
+      <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Alerta! Problemas na literatura científica (cont.)</h2>
   </hgroup>
@@ -123,7 +203,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>O viés de publicação</h2>
   </hgroup>
@@ -139,7 +219,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-7" style="background:;">
+      <slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Pesquisadores e suas bolas de cristal</h2>
   </hgroup>
@@ -153,7 +233,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-8" style="background:;">
+      <slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>Replicações não são bem vindas</h2>
   </hgroup>
@@ -167,7 +247,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-9" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Exemplo - Efeito &quot;psi&quot;</h2>
   </hgroup>
@@ -185,7 +265,7 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-10" style="background:;">
+      <slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>O que você pode fazer para melhorar a situação</h2>
   </hgroup>
@@ -197,8 +277,47 @@ c &lt;- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
 <li>Divulgar resultados negativos e contraditórios</li>
 </ul>
 
-<h2></h2>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Referências selecionadas</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Cochrane Collaboration. (2012). <a href="http://www.cochrane-net.org/openlearning/html/mod15-2.htm">Publication Bias</a> The Cochrane Collaboration open learning material.de </li>
+<li>Sterling, T. D. (1959). Publication Decisions and Their Possible Effects on Inferences Drawn from Tests of Significance--Or Vice Versa. Journal of the American Statistical Association, 54(285), 30–34.</li>
+<li>Sterling, T. D., Rosenbaum, W. L., &amp; Weinkam, J. J. (1995). Publication Decisions Revisited: The Effect of the Outcome of Statistical Tests on the Decision to Publish and Vice Versa. The American Statistician, 49(1), 108–112. doi:10.2307/2684823</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Referências selecionadas (cont.)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Bem, D. J. (2011). Feeling the future: Experimental evidence for anomalous retroactive influences on cognition and affect. Journal of Personality and Social Psychology, 100(3), 407–425. doi:10.1037/a0021524</li>
+<li>Ritchie, S. J., Wiseman, R., &amp; French, C. C. (2012). Failing the Future: Three Unsuccessful Attempts to Replicate Bem’s “Retroactive Facilitation of Recall” Effect. PLoS ONE, 7(3), e33423. doi:10.1371/journal.pone.0033423</li>
+<li>Ioannidis, J. P. A. (2005). Why Most Published Research Findings Are False. PLoS Med, 2(8), e124. doi:10.1371/journal.pmed.0020124</li>
+<li>Fanelli, D. (2010). “Positive” Results Increase Down the Hierarchy of the Sciences. PLoS ONE, 5(4), e10068. doi:10.1371/journal.pone.0010068</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
   </article>
   <!-- Presenter Notes -->
 </slide>

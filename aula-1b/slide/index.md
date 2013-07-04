@@ -3,6 +3,7 @@ title       : Por que diabos eu deveria estudar estatística?
 subtitle    : Curso Ninja de Estatística em R para Ciências da Saúde
 author      : Henrique Pinto Gomide
 job         : Mestrando em Psicologia - UFJF / Pesquisador CREPEIA
+logo        : ninja.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -10,7 +11,7 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
-## Por que diabos você deveria estudar estatística?
+## Por que diabos você deveria estudar estatística com R?
 * Para parecer um doido perante seus colegas
 * Como clínico, auxiliar seus pacientes a tomarem decisão sobre tratamentos
 * Ler criticamente trabalhos científicos
@@ -18,10 +19,17 @@ mode        : selfcontained # {standalone, draft}
 
 ---
 
-## Parecendo um doido perante seus colegas
+## Parecendo um doido
 
 ```r
 require("mvtnorm")
+```
+
+```
+## Loading required package: mvtnorm
+```
+
+```r
 # ----Simulação de diferentes coeficientes de regressão#### cor(a) = 0,30;
 # cor(b) = 0.60; cor(c) = 0.99
 set.seed(1)
@@ -38,11 +46,48 @@ c <- rmvnorm(n = 100, mean = c(20, 40), sigma = matrix(c(5, 0.99 * sqrt(50),
 
 ---
 
-## Parecendo um doido
+## Parecendo um doido (cont.)
 <center>
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 </center>
+
+---
+
+## Parecendo um doido (mas empregado)
+* Nós nunca tivemos tanta informação sobre tudo.
+* Precisamos analisá-la e entendê-la.
+
+---
+
+## Exemplo Caso Target 
+<center>
+![Walter Mercado](assets/img/walter-mercado.png)
+</center>
+[Link](http://goo.gl/EaJHV)
+
+---
+
+## Auxiliar seus pacientes a tomarem decisão sobre tratamentos
+* Decisões sobre tratamentos são tomadas com base em estatística.
+* Sejam eles avaliados em estudos observacionais, clínicos randomizados, metanálises, etc.
+* Hein?
+
+---
+
+## O outro caminho...
+(Kypri et al., 2013)
+<center>
+![abstract](assets/img/abstract.png)
+</center>
+
+
+---
+
+## O outro caminho... (cont.)
+* Boa parte dos profissionais pulam a estatística e recorrem a livros textos e a autores famosos.
+* Ou a jornais, revistas, televisão...
+* Ou a literatura científica! - Nosso porto seguro?
 
 ---
 
@@ -97,4 +142,19 @@ O autor recomendou a outros pesquisadores a replicação de estudos.
 * Divulgar todas as análises que você fez (com o R)
 * Divulgar resultados negativos e contraditórios
 
---
+---
+
+## Referências selecionadas
+* Cochrane Collaboration. (2012). [Publication Bias](http://www.cochrane-net.org/openlearning/html/mod15-2.htm) The Cochrane Collaboration open learning material.de 
+* Sterling, T. D. (1959). Publication Decisions and Their Possible Effects on Inferences Drawn from Tests of Significance--Or Vice Versa. Journal of the American Statistical Association, 54(285), 30–34.
+* Sterling, T. D., Rosenbaum, W. L., & Weinkam, J. J. (1995). Publication Decisions Revisited: The Effect of the Outcome of Statistical Tests on the Decision to Publish and Vice Versa. The American Statistician, 49(1), 108–112. doi:10.2307/2684823
+
+---
+
+## Referências selecionadas (cont.)
+* Bem, D. J. (2011). Feeling the future: Experimental evidence for anomalous retroactive influences on cognition and affect. Journal of Personality and Social Psychology, 100(3), 407–425. doi:10.1037/a0021524
+* Ritchie, S. J., Wiseman, R., & French, C. C. (2012). Failing the Future: Three Unsuccessful Attempts to Replicate Bem’s “Retroactive Facilitation of Recall” Effect. PLoS ONE, 7(3), e33423. doi:10.1371/journal.pone.0033423
+* Ioannidis, J. P. A. (2005). Why Most Published Research Findings Are False. PLoS Med, 2(8), e124. doi:10.1371/journal.pmed.0020124
+* Fanelli, D. (2010). “Positive” Results Increase Down the Hierarchy of the Sciences. PLoS ONE, 5(4), e10068. doi:10.1371/journal.pone.0010068
+
+---

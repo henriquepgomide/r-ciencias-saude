@@ -1,7 +1,7 @@
 ---
 title       : Making Off - Ciência e Filosofia da Medida
 subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
-author      : Daniele Trindade e Júlia Carelli
+author      : Daniele Trindade, Júlia Carelli e Henrique Gomide
 job         : PET-Psicologia
 logo        : ninja.png
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -100,7 +100,7 @@ Objetivos
 ---
 
 ## As medidas em ciências do comportamento
-Para ser ciência, deve haver mensuração e uso da matemática.
+Mantra repetido por muitos - Para ser ciência, deve haver mensuração e uso da matemática.
 
 Medida por lei - Stevens
 * "Mede-se por lei quando se quer demonstrar empiricamente que dois ou mais atributos estruturalmente diferentes mantêm entre si relações sistemáticas".
@@ -165,7 +165,7 @@ Não, se...
 * Popper, K. R. (2008). Conjecturas e Refutações. (S. Bath, Trad.). Brasilia: Editora Universidade de Brasília.
 * Pasquali, L. (2003). Psicometria: teoria dos testes na psicologia e na educação. Petrópolis: Vozes.
 * Michell, J. (1999). Measurement in psychology critical history of a methodological concept. New York: Cambridge University Press.
-* An introduction to psychometric theory with applications in R http://www.personality-project.org/r/book/
+* An introduction to psychometric theory with applications in R [http://www.personality-project.org/r/book/]([http://www.personality-project.org/r/book/])
 
 ---
 
