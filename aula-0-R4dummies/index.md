@@ -1,0 +1,75 @@
+---
+title       : Introdução ao R
+subtitle    : Estatística Aplicada com R para Psicologia e Ciências da Saúde
+author      : Henrique Pinto Gomide
+job         : Mestrando em Psicologia - UFJF / Pesquisador CREPEIA
+framework   : io2012       # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Por que o R?
+Vantagens
+* Gratuito,código-aberto e multiplataforma
+* Padrão ouro em pesquisas reprodutíveis
+* De estatísticos para estatísticos
+* Maior velocidade na implementação de métodos de análise
+* Documentação com exemplos práticos e claros
+
+---
+
+## Por que o R?
+Desvantagens
+* Exige maior tempo para aprendizado que os programas clicar-e-apontar
+* De estatísticos para estatísticos
+* Não é uma solução para todos os problemas do mundo!
+
+---
+
+## Por que aprender o R
+* R é uma linguagem de programação,
+* Existem ambientes apontar-e-clicar para o R como o [RCommander](http://www.rcommander.com/),
+* Rode de qualquer computador, sem pagar nada.
+* Relatórios com [Sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/), [Rmarkdown](http://www.rstudio.com/ide/docs/authoring/using_markdown)...
+
+---
+
+## Por que aprender o R?
+![Número de artigos citando os programas de análise de dados](http://r4stats.files.wordpress.com/2012/04/fig_7a_scholarlyimpactbig61.png)
+
+---
+
+## Por que aprender o R?
+![Busca em fórums Stack Overflow](http://r4stats.files.wordpress.com/2012/04/fig_1d_stackoverflowbyweek.png)
+
+---
+
+## R para iniciantes
+* No curso usaremos o [RStudio](http://www.rstudio.com/ide/download/) e o [RCommander](http://www.rcommander.com/)
+* [RStudio](http://www.rstudio.com/ide/download/) - Deixar sua vida mais fácil para gerenciar pacotes, salvar gráficos e fazer análises
+* [RCommander](http://www.rcommander.com/)r - Apontar e clicar para rodas as análises estatísticas
+* Diversos tutoriais e formas de analisar dados serão divulgados para facilitar sua vida.
+
+---
+
+## Como instalar
+* R - Instale o R [aqui](http://cran.fiocruz.br/).
+* Rstudio - Clique no botão "Download Rstudio Desktop" neste [link](http://www.rstudio.com/ide/download/)
+* Rcommander - Abra o Rstudio, vá em "tools  > Install Packages" e digite "Rcmdr", Dê ok. Clique em instalar
+* [Vídeo de instalação](https://www.youtube.com/watch?v=-SH3qHL2f1g) no youtube.
+
+---
+
+## Referências e dicas
+* [Popularidade do R](http://r4stats.com/articles/popularity/)
+* [R para Psicologia](http://www.personality-project.org/)
+
+---
+
+## Agradecimentos
+* R Core Development Team
+* Ramnath Vaidyanathan - https://github.com/ramnathv
+
+---

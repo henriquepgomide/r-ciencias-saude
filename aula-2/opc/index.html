@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R - Tipos de objetos</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R - Tipos de objetos">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>R - Tipos de objetos</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Alerta ao pequeno ninja</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Esta aula é opcional. Trabalharemos noções básicas da linguagem R. </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Tipos de objetos no R utéis para o curso</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Vetores (numeric, logical, integer, character)</li>
+<li>Bancos de dados (data frame)</li>
+<li>fatores (factors)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Vetores</h2>
+  </hgroup>
+  <article>
+    <p>Podem conter números (reais, caracteres, lógicos, inteiros, ...)</p>
+
+<ul>
+<li>numeric</li>
+</ul>
+
+<pre><code class="r">1 + 1 + 5
+</code></pre>
+
+<pre><code>## [1] 7
+</code></pre>
+
+<ul>
+<li>logic</li>
+</ul>
+
+<pre><code class="r">1 &lt; 0
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Vetores (cont.)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>character</li>
+</ul>
+
+<pre><code class="r">&quot;meu nome é Henrique&quot;
+</code></pre>
+
+<pre><code>## [1] &quot;meu nome é Henrique&quot;
+</code></pre>
+
+<ul>
+<li>integer</li>
+</ul>
+
+<pre><code class="r">1:10
+</code></pre>
+
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Vetores (cont.)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">reais &lt;- c(1, 5, 3, 4, 5)
+caracteres &lt;- c(&quot;padre&quot;, &quot;menino&quot;, &quot;jegue&quot;, &quot;pneu de caminhão&quot;)
+logicos &lt;- c(TRUE, FALSE, TRUE, FALSE)
+inteiro &lt;- 1:10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Banco de dados (data frames)</h2>
+  </hgroup>
+  <article>
+    <p>Vamos trabalhar com estes durante o curso</p>
+
+<pre><code class="r">varA &lt;- c(10, 5, 3, 4, 1)  # Variável A
+varB &lt;- c(1, 2, 2, 1, 1)  # Variável B
+df &lt;- data.frame(varA, varB)  # Transformando em banco de dados
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Fatores</h2>
+  </hgroup>
+  <article>
+    <p>Contém os &quot;rótulos&quot; dos dados</p>
+
+<pre><code class="r">a &lt;- c(&quot;masc&quot;, &quot;fem&quot;, &quot;masc&quot;, &quot;fem&quot;, &quot;fem&quot;)  # Vetor em character
+sex &lt;- factor(a)  # Transformando em fatores
+levels(sex)  # Fatores
+</code></pre>
+
+<pre><code>## [1] &quot;fem&quot;  &quot;masc&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Funções</h2>
+  </hgroup>
+  <article>
+    <p>O que faz o R valer a pena! Assume a forma de:</p>
+
+<p><code>nomedafuncao(parametro1, parametro2, opcoes, ...)</code></p>
+
+<pre><code class="r">sim &lt;- rnorm(n = 300, mean = 100, sd = 20)  # Simulando uma distribuição normal
+summary(sim)  # Estatísticas descritivas da distribuição
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    52.6    84.3    98.4    98.2   111.0   153.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Funções (cont.)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">hist(sim, probability = TRUE)  # Histograma de distribuição da variável simulada
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Funções (você pode escrever as suas!)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">descritivas &lt;- function(varA) {
+
+    hist(varA, xlab = paste(&quot;Variável varA simulada de média&quot;, round(mean(varA), 
+        2), &quot;e desvio padrão&quot;, round(sd(varA), 2), sep = &quot; &quot;), ylab = &quot;Frequência&quot;, 
+        main = &quot;Distribuição de Frequência da Variável varA&quot;)
+
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Funções (você pode escrever as suas!)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">descritivas(sim)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Referências</h2>
+  </hgroup>
+  <article>
+    <p><a href="http://www.statmethods.net/input/datatypes.html">Site para iniciantes em R</a>
+<a href="http://ridiculas.wordpress.com/">Ridiculas</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
