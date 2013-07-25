@@ -1,0 +1,127 @@
+---
+title       : Importando dados para o R
+subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
+author      : Henrique Gomide
+job         : CREPEIA, PET - Psicologia
+logo        : ninja.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Resumo
+
+1. Dados em *.csv ou *.txt
+2. Dados do Google Docs
+3. Dados do $P$$ e outros programas
+
+---
+
+## Dados em *.txt
+Função - read.table()
+```{r}
+str(read.table)
+```
+
+Exemplo - `dados  <- read.table("arquivo", ...)`
+
+---
+
+## Dados em *. (cont.)
+
+* file - o arquivo do banco
+* header - o dado contém cabeçalho? TRUE or FALSE
+* sep - qual o separador dos dados? vírgula ou ponto.
+* fill - preencher dados em branco
+* na.strings - qual é o nome dado aos dados omissos? "NA". Para incluir brancos, use o vetor c("NA","")
+
+---
+
+## Dados em *.csv
+Funçao - read.csv()
+```{r}
+str(read.csv)
+```
+
+Exemplo - `dados  <- read.csv("arquivo", ...)`
+
+---
+
+## Dados do Google Docs - na planilha
+
+1. Abra sua planilha no Google Drive.
+2. Clique no botão compartilhar na barra superior e escolha a opção "todos com o link" na opção de visibilidade
+
+
+---
+
+## Dados do Google Docs - na planilha (cont.)
+
+1. Com sua planilha aberta vá em "Arquivo" -> "Publicar na web..."
+2. Escolha a planilha desejada e clique em "Publicar"
+3. Nas opções "Estabelecer link para dados publicados", escolha "CSV" e troque de "todas as páginas" para planilha com os dados.
+4. Copie o link que aparecer com "Control + C"
+
+Se você mudar algum dado, é possível que você precise republicar a planilha, executanto estas três instruções novamente.
+
+----
+
+## Dados do Google Docs - no R (cont)
+
+Pacote para fazer a mágica
+```{r}
+library(RCurl) # Carregando pacote RCurl
+```
+Para instalar use `install.packages("RCurl")`
+
+---
+
+## Dados do Google Docs - no R (cont)
+
+Seu link aqui
+```{r}
+meuCsv  <- getURL("https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&single=true&gid=1&output=csv")  #salvando o link para a planilha do Google
+ncol  <- max(count.fields(textConnection(meuCsv), sep =",")) # Estimando o número de colunas da tabela
+
+```
+
+---
+
+## Dados do Google Docs - no R (cont)
+
+```{r}
+dados  <- read.csv(textConnection(meuCsv), header=TRUE, fill = TRUE, col.names = paste0("v", seq_len(ncol)), na.strings = c("NA",""))
+```
+
+* header = TRUE, significa que a planilha possui a primeira linha de cabeçalho; 
+* col.names, recodifica as variáveis para v+número da coluna; 
+* na.strings identifica os valores missing, neste caso NA e "" (espaço em branco).
+
+---
+
+## Testando
+
+```{r}
+dim(dados)
+names(dados)
+```
+
+---
+
+## Dados do SPSS
+
+* Salve o arquivo do SPSS em formato portable *.por
+* Pacote foreign
+```{r}
+str(read.spss)
+```
+
+---
+
+## Dados de outros programas
+
+[Link para quick-stats](http://www.statmethods.net/input/importingdata.html)
+
+---

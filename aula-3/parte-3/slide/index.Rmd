@@ -1,0 +1,146 @@
+---
+title       : R - Funções vitais para dados
+subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
+author      : Henrique Gomide
+job         : CREPEIA, PET - Psicologia
+logo        : ninja.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Resumo
+
+* Visualizar e criar variáveis e objetos
+* Funções básicas
+  * head, tail
+  * levels
+  * table
+
+---
+
+## Antes de começar
+
+Abra seu banco de dados ou este aqui do Docs:
+```{r}
+library(RCurl) # Carregando pacote RCurl
+meuCsv  <- getURL("https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&single=true&gid=1&output=csv")  #salvando o link para a planilha do Google
+ncol  <- max(count.fields(textConnection(meuCsv), sep =",")) # Estimando o número de colunas da tabela
+dados  <- read.csv(textConnection(meuCsv), header=TRUE, fill = TRUE, col.names = paste0("v", seq_len(ncol)), na.strings = c("NA",""))
+
+```
+Obs: É preciso ter o pacote RCurl instalado e uma conexão com internet.
+
+---
+
+## Visualizar banco
+
+```
+View(dados)
+```
+
+---
+
+## Nomes das variáveis
+
+```{r}
+names(dados)
+```
+
+---
+
+## Número de colunas e linhas
+
+```{r}
+dim(dados)
+```
+
+---
+
+## Ver dados dos primeiros casos
+
+Use as funções head ou tail
+```{r}
+head(dados)
+```
+
+---
+
+## Ver caso específico
+
+dados[número da linha, número da coluna]
+```{r}
+dados[1,] # ver dados da primeira linha
+```
+
+---
+
+
+## Ver caso específico (cont)
+
+dados[número da linha, número da coluna]
+```{r}
+dados[1:2,1:3] # ver dados das duas primeiras linhas e das três primeiras colunas
+```
+
+---
+
+## Ver caso específico (cont)
+
+dados[número da linha, número da coluna]
+```{r}
+dados[1:2,c("v2","v76")] # ver dados das duas primeiras linhas e das variáveis v2 e v76
+```
+
+---
+
+## Variáveis
+
+Ver variável
+```{r}
+dados$v6 # ver variável v2 do banco
+```
+
+---
+
+## Variáveis (cont.)
+```{r}
+str(dados$v6) # ver estrutura da variável
+```
+
+---
+
+## Criar variável
+
+```{r}
+dados$teste  <- dados$v6  # Criar variável teste no banco com os valores da variável v6
+```
+
+---
+
+## Levels
+
+Ver níveis de uma variável
+```{r}
+levels(dados$v6)
+```
+Os levels são atribuídos automaticamente quando importados. O R codifica a variável como um fator (ex. 0 = "Não"). A lista começa do 1 e o label é atribuído em ordem alfabética ("Não"" antes do "Sim").
+
+---
+
+## Table
+
+```{r}
+table(dados$v6) #básico
+```
+```{r}
+round(cbind(table(dados$v6, useNA="always")/nrow(dados)),2) #aprimorado
+```
+
+---
+
+## Obrigado!
+
+---

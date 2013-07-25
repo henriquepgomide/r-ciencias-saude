@@ -60,6 +60,6 @@ Funções uteis do R:
 ## Offline
 
 * Método da dupla digitação - [Tutorial](http://youtu.be/JBhoWBFcDMo)
-* Analise descritivamente suas variáveis (mesmo do slide anterior)
+* Analise descritivamente suas variáveis (próxima aula)
 
 ---

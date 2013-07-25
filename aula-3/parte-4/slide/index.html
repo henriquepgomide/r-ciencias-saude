@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R - Computando variáveis para dados</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R - Computando variáveis para dados">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>R - Computando variáveis para dados</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Antes de começar</h2>
+  </hgroup>
+  <article>
+    <p>Abra seu banco de dados ou este aqui do Docs:</p>
+
+<pre><code class="r">library(RCurl)  # Carregando pacote RCurl
+meuCsv &lt;- getURL(&quot;https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&amp;single=true&amp;gid=1&amp;output=csv&quot;)  #salvando o link para a planilha do Google
+ncol &lt;- max(count.fields(textConnection(meuCsv), sep = &quot;,&quot;))  # Estimando o número de colunas da tabela
+dados &lt;- read.csv(textConnection(meuCsv), header = TRUE, fill = TRUE, col.names = paste0(&quot;v&quot;, 
+    seq_len(ncol)), na.strings = c(&quot;NA&quot;, &quot;&quot;))
+</code></pre>
+
+<p>Obs: É preciso ter o pacote RCurl instalado e uma conexão com internet.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Resumo</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Métodos para modificar valores das variáveis</li>
+<li>Computar valores de escalas</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Codificando</h2>
+  </hgroup>
+  <article>
+    <p>Codificar a variável para um número apenas
+<code>dados$ex1 &lt;- 5</code></p>
+
+<p>Trocas os dados por um valor character
+<code>dados$ex1 &lt;- &quot;cinco&quot;</code></p>
+
+<p>Trocas os valores por missing NA
+<code>dados$ex1 &lt;- NA</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Codificando</h2>
+  </hgroup>
+  <article>
+    <pre><code># Trocar os dados segundo um valor
+dados$ex1[dados$ex1==5] &lt;- &quot;Cinco&quot;
+
+# Ou trocar os dados baseados em valores maiores ou iguais
+dados$ex1[dados$ex1&lt;=5] &lt;- &quot;Uso de risco ou pesado&quot;
+
+# Ou trocar por texto
+dados$ex1[dados$ex1==&quot;Five&quot;] &lt;- &quot;Uso pesado&quot;
+
+# Ou trocar por missing
+dados$ex1[is.na(dados$ex1)] &lt;- &quot;Dado Faltoso&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Codificando usando regras de mais de uma variável</h2>
+  </hgroup>
+  <article>
+    <pre><code># Se maior que 20 anos E &quot;SIM&quot; na variável seis
+dados$ex1[dados$v2&gt;20 &amp; dados$v6 == &quot;SIM&quot;] &lt;- &quot;Cinco&quot;
+
+# Se maior que 20 anos OU &quot;sim&quot; na variável seis
+dados$ex1[dados$v2&gt;20 | dados$v6 == &quot;SIM&quot;] &lt;- &quot;Cinco&quot;
+
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Recodificando usando a Função Recode</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Possibilita maior número de categorizações para uma linha de código</li>
+<li>Depende do pacote &quot;car&quot;. Para instalar lembre-se <code>install.packages(&quot;car&quot;)</code></li>
+</ul>
+
+<pre><code class="r">dados$v6r &lt;- Recode(dados$v6, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+</code></pre>
+
+<pre><code>## Error: não foi possível encontrar a função &quot;Recode&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Comparação Recode</h2>
+  </hgroup>
+  <article>
+    <p>Modo anterior</p>
+
+<pre><code class="r">dados$v6r[dados$v6 == &quot;NAO&quot;] &lt;- 0
+dados$v6r[dados$v6 == &quot;SIM&quot;] &lt;- 3
+</code></pre>
+
+<p>Com Recode</p>
+
+<pre><code class="r">require(car)  #carregando pacote car
+</code></pre>
+
+<pre><code>## Loading required package: car
+</code></pre>
+
+<pre><code>## Loading required package: MASS
+</code></pre>
+
+<pre><code>## Loading required package: nnet
+</code></pre>
+
+<pre><code class="r">dados$v6r &lt;- Recode(dados$v6, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+# as.factor.result para trocar a variável de factor para numeric
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Exemplo Recode e primeira parte do ASSIST</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dados$v6r &lt;- Recode(dados$v6, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v7r &lt;- Recode(dados$v7, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v8r &lt;- Recode(dados$v8, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v9r &lt;- Recode(dados$v9, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v10r &lt;- Recode(dados$v10, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v11r &lt;- Recode(dados$v11, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v12r &lt;- Recode(dados$v12, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v13r &lt;- Recode(dados$v13, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v14r &lt;- Recode(dados$v14, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+dados$v15r &lt;- Recode(dados$v15, &quot;&#39;NAO&#39;=0; &#39;SIM&#39;=3&quot;, as.factor.result = FALSE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Dica importante</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Como o R é sensível a pequenos erros (vírgulas, diferença entre maiúsculas), você pode usar a função levels para saber quais valores colocar na recodificação.</li>
+<li>Sempre confira o resultado de uma recodificação. Dedos eróticos ficam famosos nesta hora.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Computando os resultados da primeira parte</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dados$escala1 &lt;- dados$v6r + dados$v7r + dados$v8r + dados$v9r + dados$v10r + 
+    dados$v11r + dados$v12r + dados$v13r + dados$v14r + dados$v15r
+</code></pre>
+
+<p>Você pode sinais de multiplicação, exponenciação, subtração, etc...</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Vendo se está tudo certo</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">head(dados$escala1)
+</code></pre>
+
+<pre><code>## [1] 18  3  3  6  3 NA
+</code></pre>
+
+<pre><code class="r">summary(dados$escala1)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##    0.00    3.00    3.00    5.65    7.50   24.00       4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Obrigado!</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

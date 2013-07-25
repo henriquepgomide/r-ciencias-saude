@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R - Funções vitais para dados</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R - Funções vitais para dados">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>R - Funções vitais para dados</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Resumo</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Visualizar e criar variáveis e objetos</li>
+<li>Funções básicas
+
+<ul>
+<li>head, tail</li>
+<li>levels</li>
+<li>table</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Antes de começar</h2>
+  </hgroup>
+  <article>
+    <p>Abra seu banco de dados ou este aqui do Docs:</p>
+
+<pre><code class="r">library(RCurl)  # Carregando pacote RCurl
+meuCsv &lt;- getURL(&quot;https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&amp;single=true&amp;gid=1&amp;output=csv&quot;)  #salvando o link para a planilha do Google
+ncol &lt;- max(count.fields(textConnection(meuCsv), sep = &quot;,&quot;))  # Estimando o número de colunas da tabela
+dados &lt;- read.csv(textConnection(meuCsv), header = TRUE, fill = TRUE, col.names = paste0(&quot;v&quot;, 
+    seq_len(ncol)), na.strings = c(&quot;NA&quot;, &quot;&quot;))
+</code></pre>
+
+<p>Obs: É preciso ter o pacote RCurl instalado e uma conexão com internet.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Visualizar banco</h2>
+  </hgroup>
+  <article>
+    <pre><code>View(dados)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Nomes das variáveis</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">names(dados)
+</code></pre>
+
+<pre><code>##  [1] &quot;v1&quot;  &quot;v2&quot;  &quot;v3&quot;  &quot;v4&quot;  &quot;v5&quot;  &quot;v6&quot;  &quot;v7&quot;  &quot;v8&quot;  &quot;v9&quot;  &quot;v10&quot; &quot;v11&quot;
+## [12] &quot;v12&quot; &quot;v13&quot; &quot;v14&quot; &quot;v15&quot; &quot;v16&quot; &quot;v17&quot; &quot;v18&quot; &quot;v19&quot; &quot;v20&quot; &quot;v21&quot; &quot;v22&quot;
+## [23] &quot;v23&quot; &quot;v24&quot; &quot;v25&quot; &quot;v26&quot; &quot;v27&quot; &quot;v28&quot; &quot;v29&quot; &quot;v30&quot; &quot;v31&quot; &quot;v32&quot; &quot;v33&quot;
+## [34] &quot;v34&quot; &quot;v35&quot; &quot;v36&quot; &quot;v37&quot; &quot;v38&quot; &quot;v39&quot; &quot;v40&quot; &quot;v41&quot; &quot;v42&quot; &quot;v43&quot; &quot;v44&quot;
+## [45] &quot;v45&quot; &quot;v46&quot; &quot;v47&quot; &quot;v48&quot; &quot;v49&quot; &quot;v50&quot; &quot;v51&quot; &quot;v52&quot; &quot;v53&quot; &quot;v54&quot; &quot;v55&quot;
+## [56] &quot;v56&quot; &quot;v57&quot; &quot;v58&quot; &quot;v59&quot; &quot;v60&quot; &quot;v61&quot; &quot;v62&quot; &quot;v63&quot; &quot;v64&quot; &quot;v65&quot; &quot;v66&quot;
+## [67] &quot;v67&quot; &quot;v68&quot; &quot;v69&quot; &quot;v70&quot; &quot;v71&quot; &quot;v72&quot; &quot;v73&quot; &quot;v74&quot; &quot;v75&quot; &quot;v76&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Número de colunas e linhas</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dim(dados)
+</code></pre>
+
+<pre><code>## [1] 55 76
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Ver dados dos primeiros casos</h2>
+  </hgroup>
+  <article>
+    <p>Use as funções head ou tail</p>
+
+<pre><code class="r">head(dados)
+</code></pre>
+
+<pre><code>##                   v1 v2        v3                         v4 v5  v6  v7
+## 1 7/23/2013 17:00:54 25  Feminino Ensino superior incompleto NA SIM SIM
+## 2 7/23/2013 20:39:44 23  Feminino Ensino superior incompleto NA NAO SIM
+## 3 7/23/2013 20:40:51 26  Feminino   Ensino superior completo NA NAO SIM
+## 4 7/23/2013 20:51:58 21 Masculino Ensino superior incompleto NA NAO SIM
+## 5 7/23/2013 21:08:41 NA Masculino Ensino superior incompleto NA NAO SIM
+## 6 7/23/2013 21:26:18 29 Masculino Ensino superior incompleto NA SIM SIM
+##    v8   v9 v10 v11 v12 v13 v14 v15        v16        v17        v18
+## 1 SIM  SIM NAO NAO SIM SIM NAO NAO Nao, nunca Nao, nunca Nao, nunca
+## 2 NAO  NAO NAO NAO NAO NAO NAO NAO Nao, nunca Nao, nunca Nao, nunca
+## 3 NAO  NAO NAO NAO NAO NAO NAO NAO Nao, nunca Nao, nunca Nao, nunca
+## 4 SIM  NAO NAO NAO NAO NAO NAO NAO Nao, nunca Nao, nunca Nao, nunca
+## 5 NAO  NAO NAO NAO NAO NAO NAO NAO Nao, nunca Nao, nunca Nao, nunca
+## 6 NAO &lt;NA&gt; NAO NAO NAO NAO NAO NAO Nao, nunca Nao, nunca Nao, nunca
+##          v19        v20        v21        v22        v23        v24
+## 1 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+## 2 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+## 3 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+## 4 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+## 5 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+## 6 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+##          v25        v26   v27          v28   v29   v30   v31   v32   v33
+## 1 Nao, nunca Nao, nunca Nunca        Nunca Nunca Nunca Nunca Nunca Nunca
+## 2 Nao, nunca Nao, nunca Nunca        Nunca Nunca Nunca Nunca Nunca Nunca
+## 3 Nao, nunca Nao, nunca Nunca 1 ou 2 vezes Nunca Nunca Nunca Nunca Nunca
+## 4 Nao, nunca Nao, nunca Nunca  Mensalmente Nunca Nunca Nunca Nunca Nunca
+## 5 Nao, nunca Nao, nunca Nunca 1 ou 2 vezes Nunca Nunca Nunca Nunca Nunca
+## 6 Nao, nunca Nao, nunca Nunca        Nunca Nunca Nunca Nunca Nunca Nunca
+##     v34   v35   v36   v37   v38   v39   v40   v41   v42   v43   v44   v45
+## 1 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 2 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 3 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 4 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 5 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 6 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+##     v46   v47   v48   v49   v50   v51   v52   v53   v54   v55   v56
+## 1 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 2 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 3 Nunca  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;
+## 4 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 5 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 6 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+##            v57          v58   v59   v60   v61   v62   v63   v64   v65
+## 1 1 ou 2 vezes Semanalmente Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 2        Nunca        Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 3        Nunca        Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 4        Nunca        Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 5        Nunca        Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+## 6        Nunca        Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+##     v66        v67        v68        v69        v70        v71        v72
+## 1 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 2 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 3 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 4 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 5 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 6 Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+##          v73        v74        v75        v76
+## 1 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 2 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 3 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 4 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 5 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+## 6 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Ver caso específico</h2>
+  </hgroup>
+  <article>
+    <p>dados[número da linha, número da coluna]</p>
+
+<pre><code class="r">dados[1, ]  # ver dados da primeira linha
+</code></pre>
+
+<pre><code>##                   v1 v2       v3                         v4 v5  v6  v7  v8
+## 1 7/23/2013 17:00:54 25 Feminino Ensino superior incompleto NA SIM SIM SIM
+##    v9 v10 v11 v12 v13 v14 v15        v16        v17        v18        v19
+## 1 SIM NAO NAO SIM SIM NAO NAO Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+##          v20        v21        v22        v23        v24        v25
+## 1 Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca Nao, nunca
+##          v26   v27   v28   v29   v30   v31   v32   v33   v34   v35   v36
+## 1 Nao, nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+##     v37   v38   v39   v40   v41   v42   v43   v44   v45   v46   v47   v48
+## 1 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca
+##     v49   v50   v51   v52   v53   v54   v55   v56          v57
+## 1 Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca 1 ou 2 vezes
+##            v58   v59   v60   v61   v62   v63   v64   v65   v66        v67
+## 1 Semanalmente Nunca Nunca Nunca Nunca Nunca Nunca Nunca Nunca NAO, Nunca
+##          v68        v69        v70        v71        v72        v73
+## 1 NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca NAO, Nunca
+##          v74        v75        v76
+## 1 NAO, Nunca NAO, Nunca NAO, Nunca
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Ver caso específico (cont)</h2>
+  </hgroup>
+  <article>
+    <p>dados[número da linha, número da coluna]</p>
+
+<pre><code class="r">dados[1:2, 1:3]  # ver dados das duas primeiras linhas e das três primeiras colunas
+</code></pre>
+
+<pre><code>##                   v1 v2       v3
+## 1 7/23/2013 17:00:54 25 Feminino
+## 2 7/23/2013 20:39:44 23 Feminino
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Ver caso específico (cont)</h2>
+  </hgroup>
+  <article>
+    <p>dados[número da linha, número da coluna]</p>
+
+<pre><code class="r">dados[1:2, c(&quot;v2&quot;, &quot;v76&quot;)]  # ver dados das duas primeiras linhas e das variáveis v2 e v76
+</code></pre>
+
+<pre><code>##   v2        v76
+## 1 25 NAO, Nunca
+## 2 23 NAO, Nunca
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Variáveis</h2>
+  </hgroup>
+  <article>
+    <p>Ver variável</p>
+
+<pre><code class="r">dados$v6  # ver variável v2 do banco
+</code></pre>
+
+<pre><code>##  [1] SIM NAO NAO NAO NAO SIM SIM SIM NAO NAO NAO NAO NAO NAO NAO SIM NAO
+## [18] SIM NAO SIM NAO SIM NAO NAO NAO NAO SIM NAO NAO NAO SIM NAO NAO NAO
+## [35] SIM NAO NAO SIM NAO NAO NAO NAO NAO NAO NAO NAO NAO SIM SIM NAO NAO
+## [52] SIM NAO SIM NAO
+## Levels: NAO SIM
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Variáveis (cont.)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">str(dados$v6)  # ver estrutura da variável
+</code></pre>
+
+<pre><code>##  Factor w/ 2 levels &quot;NAO&quot;,&quot;SIM&quot;: 2 1 1 1 1 2 2 2 1 1 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Criar variável</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dados$teste &lt;- dados$v6  # Criar variável teste no banco com os valores da variável v6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Levels</h2>
+  </hgroup>
+  <article>
+    <p>Ver níveis de uma variável</p>
+
+<pre><code class="r">levels(dados$v6)
+</code></pre>
+
+<pre><code>## [1] &quot;NAO&quot; &quot;SIM&quot;
+</code></pre>
+
+<p>Os levels são atribuídos automaticamente quando importados. O R codifica a variável como um fator (ex. 0 = &quot;Não&quot;). A lista começa do 1 e o label é atribuído em ordem alfabética (&quot;Não&quot;&quot; antes do &quot;Sim&quot;).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Table</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">table(dados$v6)  #básico
+</code></pre>
+
+<pre><code>## 
+## NAO SIM 
+##  39  16
+</code></pre>
+
+<pre><code class="r">round(cbind(table(dados$v6, useNA = &quot;always&quot;)/nrow(dados)), 2)  #aprimorado
+</code></pre>
+
+<pre><code>##      [,1]
+## NAO  0.71
+## SIM  0.29
+## &lt;NA&gt; 0.00
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Obrigado!</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

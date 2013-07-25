@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importando dados para o R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Importando dados para o R">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>Importando dados para o R</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Resumo</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Dados em *.csv ou *.txt</li>
+<li>Dados do Google Docs</li>
+<li>Dados do $P$$ e outros programas</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Dados em *.txt</h2>
+  </hgroup>
+  <article>
+    <p>Função - read.table()</p>
+
+<pre><code class="r">str(read.table)
+</code></pre>
+
+<pre><code>## function (file, header = FALSE, sep = &quot;&quot;, quote = &quot;\&quot;&#39;&quot;, dec = &quot;.&quot;, 
+##     row.names, col.names, as.is = !stringsAsFactors, na.strings = &quot;NA&quot;, 
+##     colClasses = NA, nrows = -1, skip = 0, check.names = TRUE, fill = !blank.lines.skip, 
+##     strip.white = FALSE, blank.lines.skip = TRUE, comment.char = &quot;#&quot;, 
+##     allowEscapes = FALSE, flush = FALSE, stringsAsFactors = default.stringsAsFactors(), 
+##     fileEncoding = &quot;&quot;, encoding = &quot;unknown&quot;, text)
+</code></pre>
+
+<p>Exemplo - <code>dados  &lt;- read.table(&quot;arquivo&quot;, ...)</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Dados em *. (cont.)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>file - o arquivo do banco</li>
+<li>header - o dado contém cabeçalho? TRUE or FALSE</li>
+<li>sep - qual o separador dos dados? vírgula ou ponto.</li>
+<li>fill - preencher dados em branco</li>
+<li>na.strings - qual é o nome dado aos dados omissos? &quot;NA&quot;. Para incluir brancos, use o vetor c(&quot;NA&quot;,&quot;&quot;)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Dados em *.csv</h2>
+  </hgroup>
+  <article>
+    <p>Funçao - read.csv()</p>
+
+<pre><code class="r">str(read.csv)
+</code></pre>
+
+<pre><code>## function (file, header = TRUE, sep = &quot;,&quot;, quote = &quot;\&quot;&quot;, dec = &quot;.&quot;, 
+##     fill = TRUE, comment.char = &quot;&quot;, ...)
+</code></pre>
+
+<p>Exemplo - <code>dados  &lt;- read.csv(&quot;arquivo&quot;, ...)</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Dados do Google Docs - na planilha</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Abra sua planilha no Google Drive.</li>
+<li>Clique no botão compartilhar na barra superior e escolha a opção &quot;todos com o link&quot; na opção de visibilidade</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Dados do Google Docs - na planilha (cont.)</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Com sua planilha aberta vá em &quot;Arquivo&quot; -&gt; &quot;Publicar na web...&quot;</li>
+<li>Escolha a planilha desejada e clique em &quot;Publicar&quot;</li>
+<li>Nas opções &quot;Estabelecer link para dados publicados&quot;, escolha &quot;CSV&quot; e troque de &quot;todas as páginas&quot; para planilha com os dados.</li>
+<li>Copie o link que aparecer com &quot;Control + C&quot;</li>
+</ol>
+
+<p>Se você mudar algum dado, é possível que você precise republicar a planilha, executanto estas três instruções novamente.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Dados do Google Docs - no R (cont)</h2>
+  </hgroup>
+  <article>
+    <p>Pacote para fazer a mágica</p>
+
+<pre><code class="r">library(RCurl)  # Carregando pacote RCurl
+</code></pre>
+
+<pre><code>## Loading required package: bitops
+</code></pre>
+
+<p>Para instalar use <code>install.packages(&quot;RCurl&quot;)</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Dados do Google Docs - no R (cont)</h2>
+  </hgroup>
+  <article>
+    <p>Seu link aqui</p>
+
+<pre><code class="r">meuCsv &lt;- getURL(&quot;https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&amp;single=true&amp;gid=1&amp;output=csv&quot;)  #salvando o link para a planilha do Google
+ncol &lt;- max(count.fields(textConnection(meuCsv), sep = &quot;,&quot;))  # Estimando o número de colunas da tabela
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Dados do Google Docs - no R (cont)</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dados &lt;- read.csv(textConnection(meuCsv), header = TRUE, fill = TRUE, col.names = paste0(&quot;v&quot;, 
+    seq_len(ncol)), na.strings = c(&quot;NA&quot;, &quot;&quot;))
+</code></pre>
+
+<ul>
+<li>header = TRUE, significa que a planilha possui a primeira linha de cabeçalho; </li>
+<li>col.names, recodifica as variáveis para v+número da coluna; </li>
+<li>na.strings identifica os valores missing, neste caso NA e &quot;&quot; (espaço em branco).</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Testando</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">dim(dados)
+</code></pre>
+
+<pre><code>## [1] 55 76
+</code></pre>
+
+<pre><code class="r">names(dados)
+</code></pre>
+
+<pre><code>##  [1] &quot;v1&quot;  &quot;v2&quot;  &quot;v3&quot;  &quot;v4&quot;  &quot;v5&quot;  &quot;v6&quot;  &quot;v7&quot;  &quot;v8&quot;  &quot;v9&quot;  &quot;v10&quot; &quot;v11&quot;
+## [12] &quot;v12&quot; &quot;v13&quot; &quot;v14&quot; &quot;v15&quot; &quot;v16&quot; &quot;v17&quot; &quot;v18&quot; &quot;v19&quot; &quot;v20&quot; &quot;v21&quot; &quot;v22&quot;
+## [23] &quot;v23&quot; &quot;v24&quot; &quot;v25&quot; &quot;v26&quot; &quot;v27&quot; &quot;v28&quot; &quot;v29&quot; &quot;v30&quot; &quot;v31&quot; &quot;v32&quot; &quot;v33&quot;
+## [34] &quot;v34&quot; &quot;v35&quot; &quot;v36&quot; &quot;v37&quot; &quot;v38&quot; &quot;v39&quot; &quot;v40&quot; &quot;v41&quot; &quot;v42&quot; &quot;v43&quot; &quot;v44&quot;
+## [45] &quot;v45&quot; &quot;v46&quot; &quot;v47&quot; &quot;v48&quot; &quot;v49&quot; &quot;v50&quot; &quot;v51&quot; &quot;v52&quot; &quot;v53&quot; &quot;v54&quot; &quot;v55&quot;
+## [56] &quot;v56&quot; &quot;v57&quot; &quot;v58&quot; &quot;v59&quot; &quot;v60&quot; &quot;v61&quot; &quot;v62&quot; &quot;v63&quot; &quot;v64&quot; &quot;v65&quot; &quot;v66&quot;
+## [67] &quot;v67&quot; &quot;v68&quot; &quot;v69&quot; &quot;v70&quot; &quot;v71&quot; &quot;v72&quot; &quot;v73&quot; &quot;v74&quot; &quot;v75&quot; &quot;v76&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Dados do SPSS</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Salve o arquivo do SPSS em formato portable *.por</li>
+<li>Pacote foreign</li>
+</ul>
+
+<pre><code class="r">str(read.spss)
+</code></pre>
+
+<pre><code>## Error: objeto &#39;read.spss&#39; não encontrado
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Dados de outros programas</h2>
+  </hgroup>
+  <article>
+    <p><a href="http://www.statmethods.net/input/importingdata.html">Link para quick-stats</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>
