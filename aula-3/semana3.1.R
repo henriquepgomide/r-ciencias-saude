@@ -6,7 +6,7 @@
 install.packages("RCurl") # Instalando o pacote RCurl
 library(RCurl)# Carregando pacote RCurl
 
-meuCsv  <- getURL("https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&single=true&gid=1&output=csv")  #salvando o link para a planilha do Google
+meuCsv  <- getURL("https://docs.google.com/spreadsheet/pub?key=0Atv-ntf9TI4edFpMalBzelZxa1dxZFByR29FVUFjM3c&single=true&gid=1&output=csv", ssl.verifypeer = FALSE)  #salvando o link para a planilha do Google
 ncol  <- max(count.fields(textConnection(meuCsv), sep =",")) # Estimando o número de colunas da tabela
 
 ##--- Importando Banco de Dados ---##
