@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{url}
+\title{\textbf{Curso Ninja em R para Ciências da Saúde} \\ Guia do Banco autoestima.csv}
+\author{Henrique Pinto gomide}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+
+O banco de dados "auto-estima.csv" contém 31 variavéis com 56 observações. Ele é possui variáveis de classificação socio-demográfica e do instrumento "Escala de auto-estima de Rosenberg".
+
+Os dados foram coletados através da internet, não sendo feita nenhuma amostragem. Seu fim é para estudo somente.
+
+Link para download: \url{https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv}.
+
+\section{Descrição das variáveis}
+
+\subsection{Sócio-demográfico}
+
+\begin{itemize}
+	\item x - Código do questionário
+	\item v1 - Data e hora que o questionário foi preenchido
+	\item v2 - Nome completo - apagado para evitar identificação
+	\item v3 - Idade em anos
+	\item v4 e v5 - Email - apagado para evitar identificação
+	\item v6 - Sexo - "Masculino" ou "Feminino"
+	\item v7 - Estado civil - "Casado(a)" "Divorciado(a)/Separado(a)" "Solteiro(a)"
+	\item v8 - Escolaridade - "Ensino Fundamental Completo", "Ensino Médio Completo", "Ensino Médio Incompleto", "Ensino Superior Completo" e "Ensino Superior Incompleto"
+	\item v9 - Pratica alguma religião - "Sim", "Não"
+\end{itemize}
+
+\subsection{Escala de Auto estima}
+O instrumento possui 10 questões, que podem ser respondidas entre quatro categorias. Este valores devem ser convertidos e somados segundo o seguinte critério: "Concordo Plenamente" - 4, "Concordo" - 3, "Discordo" - 2, "Discordo Plenamente" -1.
+
+Abaixo os títulos das questões:
+\begin{itemize}
+	\item v10 -  De uma forma geral (apesar de tudo), você está satisfeito (a) consigo mesmo (a).
+	\item v11 - Às vezes, você acha que não serve para nada (desqualificado (a) ou inferior em relação aos outros).
+	\item v12 - Você sente que tem um tanto (um número) de boas qualidades.
+	\item v13 - Você é capaz de fazer coisas tão bem quanto a maioria das outras pessoas (desde que te ensinadas).
+	\item v14 - Você não sente satisfação nas coisas que realizou. Você sente que não tem muito do que se orgulhar.
+	\item v15 - Às vezes, você realmente se sente inútil (incapaz de fazer as coisas).
+	\item v16 - Você sente que é uma pessoa de valor, pelo menos num plano igual (num mesmo nível) às outras pessoas.
+	\item v17 - Você não se dá o devido valor. Você gostaria de ter mais respeito por você mesmo (a).
+	\item v18 - Quase sempre você está inclinado (a) a achar que é um(a) fracassado(a).
+	\item v19 - Você tem uma atitude positiva (pensamentos, atos e sentimentos positivos) em relação a você mesmo (a).
+\end{itemize}
+
+\subsection{Recodificação do banco e soma da escala}
+\begin{itemize}
+	\item v10r a v19r - variáveis recodificadas segundo critério estabelecido na sessão anterior.
+	\item somaescala - soma da escala de auto-estima. 
+\end{itemize}
+
+\end{document}

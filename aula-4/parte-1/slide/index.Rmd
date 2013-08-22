@@ -1,0 +1,169 @@
+---
+title       : Estatística descritiva - sem figuras
+subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
+author      : Henrique Gomide
+job         : CREPEIA, PET - Psicologia
+logo        : ninja.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Antes de começar
+Downloads
+* [Banco de dados](https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv) - https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv
+* [Descrição do banco](https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf) - https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf
+
+---
+
+## Carregando o banco da aula e pacotes
+
+```{r echo = FALSE}
+dados  <- read.csv("~/Dropbox/cursos/r-psicologia/aula-4/autoestima.csv")
+```
+```
+dados  <- read.csv(file.choose(), header=TRUE, sep=",")
+require(psych)
+require(ggplot2)
+```
+
+---
+
+## Resumo
+
+1. Média, variância, desvio padrão
+2. Mediana, quartis, percentis, distância interquartílica,
+3. Funções describe, summary, by 
+
+---
+
+## Medidas de tendência central
+
+* Existem diversas medidas de tendência central
+* A medida que melhor representar seu conjunto de dados deve ser escolhida
+* A escolha da medida de tendência central influencia a escolha dos testes estatísticos.
+
+---
+
+## Média
+
+* Definida como a soma dos valores de um conjunto de dados pelo número de elementos do conjunto
+* Ex: Média de idade dos participantes do banco.
+```{r}
+mean(dados$v3, na.rm = TRUE) # o argumento lógico na.rm = TRUE significa para retirar os casos faltosos no banco.
+```
+
+---
+
+## Desvio padrão
+* O desvio padrão é uma medida de dispersão de um conjunto de dados de sua média. Quanto mais dispersos os dados, maior o desvio padrão.
+```{r}
+sd(dados$v3, na.rm = TRUE) # o argumento lógico na.rm = TRUE significa para retirar os casos faltosos no banco.
+```
+
+---
+
+## Variância
+* O quadrado do desvio padrão.
+```{r}
+var(dados$v3, na.rm = TRUE) # o argumento na.rm = TRUE significa para retirar os casos faltosos no banco.
+```
+
+---
+
+## Mediana
+
+* A mediana pode ser definida como o valor que divide um conjunto de dados em uma metade inferior e outra superior
+* Ex: Mediana de idade dos participantes do banco.
+```{r}
+median(dados$v3, na.rm = TRUE) # o argumento lógico na.rm = TRUE significa para retirar os casos faltosos no banco.
+```
+
+---
+
+## Quartis e percentis
+* Os quartis são os valores que dividem um conjutno de dados em frações de 1/4, 2/4, 3/4.
+* O n percentil divide a distribuição dos dados em n por cento. 
+```{r}
+quantile(dados$v3, na.rm = TRUE, probs = c(.25,.5,.75)) # quartis
+quantile(dados$v3, na.rm = TRUE, probs = c(.5,.10,.90,.95)) # percentis 5, 10, 90 e 95.
+```
+
+---
+
+## Distância Interquartílica
+* Diferença entre os quartis 3 e 1
+```{r}
+IQR(dados$v3, na.rm = TRUE) # o argumento na.rm = TRUE significa para retirar os casos faltosos no banco.
+```
+
+---
+
+## Assimetria
+* Distribuições normais com diferentes "skewness" (n = 1000, mean = 100, sd = 20)
+```{r echo=FALSE}
+require(ESPRESSO)
+require(ggplot2)
+skewneg  <- data.frame(length = skew.rnorm(1000, mean= 100, sd= 20, skew = - 3))
+skewpos  <- data.frame(length = skew.rnorm(1000, mean= 100, sd= 20, skew = 3))
+skewno  <- data.frame(length = skew.rnorm(1000, mean= 100, sd= 20, skew = 0))
+skewneg$skew  <- "Negativo"
+skewpos$skew  <- "Positivo"
+skewno$skew  <- "Zero"
+skewLengths  <- rbind(skewno, skewneg, skewpos)
+```
+```{r echo=FALSE}
+ggplot(skewLengths, aes(length, fill = skew)) + geom_density(alpha = 0.2)
+```
+
+---
+
+## Funções summary e describe
+* Ao invés de digitar cada comando para pedir algumas saídas, duas funções são uteis:
+```{r}
+summary(dados$v3)
+describe(dados$v3) # requer pacote "psych" carregado e instalado
+```
+
+---
+
+## Momento ninja - summary para preguiçosos
+sapply - utilizando um loop summary para calcular mais de uma variavél por vez. Ex: idade e soma da escala de auto-estima
+```{r}
+sapply(dados[,c("v3", "somaescala")], summary)
+```
+
+---
+
+## Momento ninja - summary para preguiçosos - 'describe'
+Selecione variáveis númericas e rode a função describe do pacote "psych" para calcular as estatísticas descritivas das variavéis recodificadas e da soma da escala
+```{r}
+describe(dados[,21:31])
+```
+
+---
+
+## Comparar resultados dividindo por variáveis categóricas - 'by'
+Dividir resultados por variável categórica - idade por sexo
+```{r}
+by(data = dados$v3, INDICES= dados$v6, summary)
+```
+
+---
+
+## Comparar resultados dividindo por variáveis categóricas - 'subset'
+Dividir banco através de critério - idade e sexo
+```{r}
+mulheres  <- subset(dados, dados$v6 == "Feminino")
+mulheresadultas  <- subset(dados, dados$v6 == "Feminino" & dados$v3 >= 18)
+summary(mulheres$somaescala)
+summary(mulheresadultas$somaescala)
+```
+
+---
+
+## Obrigado
+
+---

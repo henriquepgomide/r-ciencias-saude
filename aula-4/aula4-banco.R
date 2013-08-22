@@ -2,7 +2,11 @@
 # Este script tem como base o instrumento Escala de autoestima de Roserberg. O download do banco de dados é feito rodando o script na sessão Importantdo banco de dados. Para rodar o código, lembre-se de clicar na linha e apertar as teclas control+enter ou o botão "Run".
 
 #--- Importando banco de dados ----
-dados  <- read.csv(file.choose(), header=TRUE, sep=",")
+
+dados  <- read.csv("autoestima.csv")
+
+# ou use a função abaixo, tire o comentário.
+# dados  <- read.csv(file.choose(), header=TRUE, sep=",")
 
 #--- Estatística descritiva ----
 

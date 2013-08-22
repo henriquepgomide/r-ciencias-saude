@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estatística descritiva - com figuras</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Estatística descritiva - com figuras">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>Estatística descritiva - com figuras</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Antes de começar</h2>
+  </hgroup>
+  <article>
+    <p>Downloads</p>
+
+<ul>
+<li><a href="https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv">Banco de dados</a> - <a href="https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv">https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv</a></li>
+<li><a href="https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf">Descrição do banco</a> - <a href="https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf">https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Carregando o banco da aula e pacotes</h2>
+  </hgroup>
+  <article>
+    <pre><code>dados  &lt;- read.csv(file.choose(), header=TRUE, sep=&quot;,&quot;)
+require(ggplot2)
+require(lattice)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Uma imagem vale mais que mil palavras...</h2>
+  </hgroup>
+  <article>
+    <ol>
+<li>Introdução ao gráficos no R</li>
+<li>Histogramas</li>
+<li>Gráficos de dispersão</li>
+<li>Gráficos de barra</li>
+<li>Boxplot</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Exemplo</h2>
+  </hgroup>
+  <article>
+    <p><center>
+<img src="assets/img/facegraph.png" alt="abstract">
+</center>
+<a href="http://blog.revolutionanalytics.com/2010/12/details-on-the-r-facebook-graph.html">Fonte</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Introdução</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Existem três pacotes principais para fazer gráficos: base, lattice e ggplot2</li>
+<li>PQP eles são diferentes! No entanto, existem alguns parâmetros em comum!</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Base e Lattice</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Base - simples e mais fácil de usar. Bom para visualizar poucas variáveis</li>
+<li>Lattice - feito para explorar relações mais complexas dos dados.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Histogramas</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">hist(dados$v3)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Gráficos de dispersão</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">plot(dados$v3, dados$somaescala)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Gráficos de barra</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">graphBar &lt;- table(dados$v6)
+barplot(graphBar)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Boxplot</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">boxplot(dados$somaescala ~ dados$v9)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Lattice</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Formato típico
+<code>
+tipodegrafico(formula, data = nome do banco de dados)
+</code>
+A fórmula especifica o valor e os fatores para visualização. Exemplos:</li>
+<li>~ x | a - especifica a variável x para os fatores a (idade por gênero)</li>
+<li>x ~ y | a*b - especifica a relação entre númericas x e y para as combinações dos fatores a e b (soma da escala por idade para gênero divido por religião)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Histogramas</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">histogram(~v3 | v6, data = dados)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Gráficos de dispersão</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">xyplot(v3 ~ somaescala | v9, data = dados)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Gráficos de barra</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">barchart(~v3 | v8, groups = v6, data = dados)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Boxplot</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">bwplot(somaescala ~ v9 | v6, data = dados)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>título no gráfico- main</h2>
+  </hgroup>
+  <article>
+    <p>Um exemplo: histogramas</p>
+
+<pre><code class="r">hist(dados$somaescala, main = &quot;Título&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>rótulos dos eixos no gráfico- xlab e ylab</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">hist(dados$v3, main = &quot;Título&quot;, xlab = &quot;Idade em anos&quot;, ylab = &quot;Frequência&quot;)
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>limite dos eixos - xlab e ylab</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">hist(dados$v3, main = &quot;Título&quot;, xlab = &quot;Idade em anos&quot;, ylab = &quot;Frequência&quot;, 
+    xlim = c(0, 80), ylim = c(0, 40))
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>cores - col</h2>
+  </hgroup>
+  <article>
+    <p>Você pode especificar cores através de index, names e hexadecimal. Aqui tem um <a href="http://www.statmethods.net/advgraphs/parameters.html">guia</a></p>
+
+<pre><code>par(mfrow=c(1,3))
+hist(dados$v3, main=&quot;Título&quot;, xlab=&quot;Idade em anos&quot;, ylab=&quot;Frequência&quot;, xlim=c(0,80), ylim=c(0,40), col=&quot;blue&quot;)
+boxplot(dados$somaescala, dados$v6, col = &quot;green&quot;)
+plot(dados$somaescala, dados$v3, col = &quot;red&quot;)
+par(mfrow=c(1,1))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>cores - col</h2>
+  </hgroup>
+  <article>
+    <p><img src="figure/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Referências</h2>
+  </hgroup>
+  <article>
+    <p>Dicas de gráficos - <a href="http://www.statmethods.net/advgraphs/parameters.html">http://www.statmethods.net/advgraphs/parameters.html</a>
+Galeria de gráficos em R - <a href="http://www.sr.bham.ac.uk/%7Eajrs/R/r-gallery.html">http://www.sr.bham.ac.uk/~ajrs/R/r-gallery.html</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

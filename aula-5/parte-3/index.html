@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cálculo de poder e amostragem simples</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Cálculo de poder e amostragem simples">
+  <meta name="author" content="Henrique Gomide">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+    
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+    <!-- END LOGO SLIDE -->
+    
+
+    <!-- TITLE SLIDE -->
+    <!-- Should I move this to a Local Layout File? -->
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar">
+        <img src="assets/img/ninja.png">
+      </aside>
+      <hgroup class="auto-fadein">
+        <h1>Cálculo de poder e amostragem simples</h1>
+        <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
+        <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
+      </hgroup>
+          </slide>
+
+    <!-- SLIDES -->
+      <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Antes de começar</h2>
+  </hgroup>
+  <article>
+    <p>Downloads</p>
+
+<ul>
+<li><a href="https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv">Banco de dados</a> - <a href="https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv">https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv</a></li>
+<li><a href="https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf">Descrição do banco</a> - <a href="https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf">https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Carregando o banco da aula e pacotes</h2>
+  </hgroup>
+  <article>
+    <pre><code>dados  &lt;- read.csv(file.choose(), header=TRUE, sep=&quot;,&quot;)
+library(pwr) # Basic functions for Power Analysis
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Resumão</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Meu querido p &lt; 0,05 (alfa)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>O valor p do teste significa a probabilidade de rejeitar Ho quando ela é de fato verdadeira.</li>
+<li>É o valor geralmente adotado pelas publicações, embora por si só não queira dizer muita coisa.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Alfa, Beta, Poder</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Alfa é a probabilidade de falhar em rejeitar Ho quando ele é de fato verdadeiro</li>
+<li>Beta é a probabiildade de falhar em rejeitar Ho quando ele é de fato falso</li>
+<li>Poder é 1-beta</li>
+<li>Estes paramêtros são importantes em determinar o tamanho de sua amostra e o tamanho da diferença que o teste estatístico pode detectar.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Tamanhos de efeito</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>É o tamanho da variabilidade da variável dependente que pode ser atribuída a variável independente (Cohen, 1992).</li>
+<li>Pode ser convertido em índice, &quot;d de Cohen&quot;. Efeito pequeno (d = 0.3), médio (d = 0.5), grande (d = 0.8).</li>
+<li>Recomendação da APA para descrever o tamanho do efeito das análises realizadas.</li>
+<li>São utilizados para determinar tamanhos de amostras com outros indicadores como o alfa e beta.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Tamanhos de efeito - pequeno</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">cohen.d(0.3)  # pequeno
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Tamanhos de efeito - médio</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">cohen.d(0.5)  # médio
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Tamanhos de efeito - grande</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">cohen.d(0.8)  # grande
+</code></pre>
+
+<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Amostragem</h2>
+  </hgroup>
+  <article>
+    <p>Para realizar amostragem (ou pedir para alguém fazê-la):</p>
+
+<ul>
+<li>Defina seu problema de pesquisa e suas hipotéses</li>
+<li>Defina as medidas que serão utilizadas e a diferença clínica esperada</li>
+<li>Defina seu beta, alpha e o tamanho de efeito esperado</li>
+<li>Corra a um estatístico ou arrisque a sorte com o pacote &quot;pwr&quot;&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>O pacote pwr</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>O pacote permite o cálculo de poder de testes utilizados como:
+
+<ul>
+<li>teste t</li>
+<li>anova</li>
+<li>qui-quadrado</li>
+<li>correlação simples</li>
+<li>modelos lineares</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Função</h2>
+  </hgroup>
+  <article>
+    <h2>Referências</h2>
+
+<ul>
+<li>Wright, D. B. (2003). Making friends with your data: Improving how statistics are conducted and  reported. British Journal of Educational Psychology, 73(1), 123.</li>
+<li>Goodwin, C. J. (2010). Research in psychology: methods and design. Hoboken, NJ: Wiley.</li>
+<li>Cohen, J. (1992). A power primer. Psychological bulletin, 112(1), 155.</li>
+<li>Stephane Champely (2012). pwr: Basic functions for power analysis. R package version 1.1.1. <a href="http://CRAN.R-project.org/package=pwr">http://CRAN.R-project.org/package=pwr</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Obrigado</h2>
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+
+  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+<!-- Grab CDN jQuery, fall back to local if offline -->
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"><\/script>')</script>
+<!-- Load Javascripts for Widgets -->
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+</html>

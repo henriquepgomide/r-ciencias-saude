@@ -1,0 +1,101 @@
+---
+title       : Mas mamãe, eu sou normal?
+subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
+author      : Henrique Gomide
+job         : CREPEIA, PET - Psicologia
+logo        : ninja.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Resumão
+
+Eu sou normal mamãe?
+
+1. Método gráfico
+2. Teste Shapiro-Wilk
+3. Exercício!
+
+---
+
+## Histogramas
+
+Uma boa forma de determinar se os dados que você está analisando seguem uma distribuição normal, é utilizar uma representação gráfica através de histogramas.
+
+```{r echo=FALSE}
+download.file("http://www.openintro.org/stat/data/bdims.RData", destfile = "bdims.RData")
+load("bdims.RData")
+fdims  <- subset(bdims, bdims$sex == 0)
+fhgtmean  <- mean(fdims$hgt)
+fhgtsd  <- sd(fdims$hgt)
+
+```
+
+```{r echo = FALSE, fig.width=7, fig.height=6}
+hist(fdims$hgt, probability = T, ylim = c(0, 0.06), xlab = "Altura", ylab = "Probabilidade acumulada", main = "Histograma da altura da amostra")
+x <- 140:190
+y <- dnorm(x = x, mean = fhgtmean, sd = fhgtsd)
+lines(x = x, y = y, col = "purple")
+```
+
+---
+
+## Q-Q Plot
+
+* O Q-Q Plot é outro método gráfico que facilita a inspeção da normalidade.
+* Este método compara duas distribuições de probabilidades através da comparação de seus quantis.
+
+---
+
+## Q-Q Plot - exemplo
+
+```{r fig.width = 7, fig.height = 6}
+qqnorm(fdims$hgt, xlab = "Quantis da Distribuição Perfeita", ylab = "Seus Quantis")
+qqline(fdims$hgt)
+```
+
+---
+
+## O que olhar no Q-Q... 
+
+* O que interessa nesse método é observar o quanto seus dados se afastam da diagonal. Esta diagonal representa uma curva normal perfeita e seus dados são representados pelos círculos que parecem fugir da diagonal. Pronto, agora vamos para o treino de seus globos oculares.
+
+---
+
+## Exercício
+
+Quais distribuições são normais? - [ampliar](https://dl.dropboxusercontent.com/u/28637541/normal.png)
+
+```{r echo = FALSE, fig.width = 7, fig.height = 7}
+qqnormsim(fdims$hgt)
+```
+
+
+---
+
+## Resposta
+
+????
+
+---
+
+
+## Shapiro-Wilk
+
+* Se tiver até 5000 casos, use-o.
+
+```{r}
+shapiro.test(rnorm(1000))
+```
+
+---
+
+## Referências
+
+[Openintro](http://www.openintro.org/) - Curso de estatística aberto com R
+
+---
+

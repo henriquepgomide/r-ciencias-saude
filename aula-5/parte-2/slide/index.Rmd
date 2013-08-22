@@ -1,0 +1,215 @@
+---
+title       : Testes de hipóteses e efeito
+subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
+author      : Henrique Gomide
+job         : CREPEIA, PET - Psicologia
+logo        : ninja.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Antes de começar
+Downloads
+* [Banco de dados](https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv) - https://www.dropbox.com/s/yg5ah2au41zoeun/autoestima.csv
+* [Descrição do banco](https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf) - https://www.dropbox.com/s/2lccmbyqyscdn30/descricao-banco-auto-estima.pdf
+
+---
+
+## Carregando o banco da aula e pacotes
+
+```{r echo = FALSE}
+dados  <- read.csv("~/Dropbox/cursos/r-psicologia/aula-4/autoestima.csv")
+```
+
+```
+dados  <- read.csv(file.choose(), header=TRUE, sep=",")
+```
+
+---
+
+## Resumão
+* Testes de hipóteses
+* Exemplo de teste - teste t
+* Alfa, p, beta
+* Tamanhos de efeito
+
+---
+
+## Testes de hipóteses
+* Formular hipóteses
+* Medir as variáveis envolvidas e examinar o relacionamento
+* calcular a probabilidade de obter tal relacionamento ao acaso
+* Se a probabilidade de resultado ao acaso for pequena, sugere-se que o padrão tem grandes chances de ser genuíno na população.
+
+---
+
+## Testes de hipóteses - Metáfora
+* Imagine num tribunal onde a pessoa é presumidamente inocente
+* O trabalho dos procuradores é convencer os jurados na hipótese alternativa, ou seja, o réu não é inocente.
+* Como o procurador, o pesquisador deve mostrar que alguma coisa aconteceu
+
+---
+
+## Exemplo - teste t - diferença entre autoestima entre homens e mulheres
+
+* h1 - existe uma diferença entre as médias dos escores de auto-estima entre os sexos
+* h0 - não existe uma diferença entre as médias dos escores e auto-estima entre os sexos
+
+---
+
+## Possibilidades
+
+
+Decisão da pesquisa      | Verdade sobre             | a população
+-----------------------  | ------------------------- | -----------------
+                         | Ho é verdadeiro           | Ho é falso
+Falha em rejeitar Ho     | Decisão Correta (1-alfa)  | Erro tipo II (beta)
+Rejeitar Ho              | Erro tipo I  (alfa)       | Decisão Correta (1-beta)
+
+
+---
+
+## Exemplo - teste t
+```{r}
+t.test(somaescala ~ v6, data = dados,  var.equal= FALSE)
+```
+
+---
+
+## Diferentes testes, diferentes Ho
+
+Atenção!
+
+Testes estatísticos podem adotar como Ho:
+* Existência de diferença ou relação
+* Ausência de diferença ou relação
+
+---
+
+## Meu querido p < 0,05 (alfa)
+
+* O valor p do teste significa a probabilidade de rejeitar Ho quando ela é de fato verdadeira.
+* É o valor geralmente adotado pelas publicações, embora por si só não queira dizer muita coisa.
+
+---
+
+## Alfa, Beta, Poder
+
+* Alfa é a probabilidade de falhar em rejeitar Ho quando ele é de fato verdadeiro
+* Beta é a probabiildade de falhar em rejeitar Ho quando ele é de fato falso
+* Poder é 1-beta
+* Estes paramêtros são importantes em determinar o tamanho de sua amostra e o tamanho da diferença que o teste estatístico pode detectar.
+
+---
+
+## Tamanhos de efeito
+
+* É o tamanho da variabilidade da variável dependente que pode ser atribuída a variável independente (Cohen, 1992).
+* Pode ser convertido em índice, "d de Cohen".
+* Recomendação da APA para descrever o tamanho do efeito das análises realizadas.
+* São utilizados para determinar tamanhos de amostras com outros indicadores como o alfa e beta.
+
+---
+
+## Tamanhos de efeito - pequeno
+
+```{r echo = FALSE}
+require("ggplot2")
+
+# Standardized Mean Difference (Cohen's d) # ggplot2 required
+cohen.d  <- function(cohen) {
+ES <- cohen
+# get mean2 depending on value of ES from d = (u1 - u2)/sd
+mean1 <- ES*1 + 1
+# create x sequence
+x <- seq(1 - 3*1, mean1 + 3*1, .01)
+# generate normal dist #1
+y1 <- dnorm(x, 1, 1)
+# put in data frame
+df1 <- data.frame("x" = x, "y" = y1)
+# generate normal dist #2
+y2 <- dnorm(x, mean1, 1)
+# put in data frame
+df2 <- data.frame("x" = x, "y" = y2)
+# get y values under overlap
+y.poly <- pmin(y1,y2)
+# put in data frame
+poly <- data.frame("x" = x, "y" = y.poly)
+
+# Cohen's U3, proportion of control > 50th perc. treatment
+u3 <- 1 - pnorm(1, mean1,1)
+u3 <- round(u3,3)
+
+# plot with ggplot2
+ggplot(df1, aes(x,y, color="treatment")) +
+  # add line for treatment group
+  geom_line(size=1) + 
+  # add line for control group
+  geom_line(data=df2, aes(color="control"),size=1) +
+  # shade overlap
+  geom_polygon(aes(color=NULL), data=poly, fill="blue", alpha=I(4/10),
+               show_guide=F) +
+  # add vlines for group means
+  geom_vline(xintercept = 1, linetype="dotted") + 
+  geom_vline(xintercept = mean1, linetype="dotted") + 
+  # add plot title
+  opts(title=paste("Visualizing Effect Sizes 
+      (Cohen's d = ",ES,"; U3 = ",u3,")", sep="")) +
+  # change colors and legend annotation
+  scale_color_manual("Group", 
+                     values= c("treatment" = "black","control" = "blue")) +
+  # remove axis labels
+  ylab(NULL) + xlab(NULL)
+}
+```
+
+```{r error=FALSE, message=FALSE, warning=FALSE}
+cohen.d(.3) # pequeno
+```
+
+---
+
+## Tamanhos de efeito - médio
+
+```{r error=FALSE, message=FALSE, warning=FALSE}
+cohen.d(.5) # médio
+```
+
+---
+
+## Tamanhos de efeito - grande
+
+```{r error=FALSE, message=FALSE, warning=FALSE}
+cohen.d(.8) # grande
+```
+
+---
+
+## O pacote pwr
+
+* O pacote permite o cálculo de poder de testes utilizados como:
+  - teste t
+  - anova
+  - qui-quadrado
+  - correlação simples
+  - modelos lineares
+
+---
+
+## Exemplo - poder 
+
+## Referências
+
+* Wright, D. B. (2003). Making friends with your data: Improving how statistics are conducted and  reported. British Journal of Educational Psychology, 73(1), 123.
+* Goodwin, C. J. (2010). Research in psychology: methods and design. Hoboken, NJ: Wiley.
+* Cohen, J. (1992). A power primer. Psychological bulletin, 112(1), 155.
+* Stephane Champely (2012). pwr: Basic functions for power analysis. R package version 1.1.1. http://CRAN.R-project.org/package=pwr
+
+---
+
+## Obrigado
+
+---
