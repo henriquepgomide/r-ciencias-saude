@@ -1,5 +1,5 @@
 ---
-title       : Cálculo de poder e amostragem simples
+title       : O tamanho do seu p importa?
 subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
 author      : Henrique Gomide
 job         : CREPEIA, PET - Psicologia
@@ -25,14 +25,25 @@ Downloads
 
 ```
 dados  <- read.csv(file.choose(), header=TRUE, sep=",")
-library(pwr) # Basic functions for Power Analysis
+library(epicalc) # Funções utéis para epidemiologia
 ```
 
 ---
 
 ## Resumão
-* 
 
+* O mantra p < 0,05
+* Alfa, Beta e Poder
+* Amostragem
+* Significância estatítica vs clínica
+* Exemplo discutido
+
+---
+
+## Significância estatística vs clínica
+
+* Significância estatística não é a mesma coisa que a clínica!
+* Um bom estudo deve ter bem definido a diferença clínica que se quer observar
 
 ---
 
@@ -100,18 +111,7 @@ cohen.d(0.8)  # grande
 
 ---
 
-## Amostragem
-
-Para realizar amostragem (ou pedir para alguém fazê-la):
-  * Defina seu problema de pesquisa e suas hipotéses
-  * Defina as medidas que serão utilizadas e a diferença clínica esperada
-  * Defina seu beta, alpha e o tamanho de efeito esperado
-  * Corra a um estatístico ou arrisque a sorte com o pacote "pwr""
-
----
-
-
-## O pacote pwr
+## Poder - O pacote pwr
 
 * O pacote permite o cálculo de poder de testes utilizados como:
   - teste t
@@ -122,8 +122,104 @@ Para realizar amostragem (ou pedir para alguém fazê-la):
 
 ---
 
-## Função
+## Amostragem
 
+Para realizar amostragem (ou pedir para alguém fazê-la):
+  * Defina seu problema de pesquisa e suas hipotéses
+  * Defina as medidas que serão utilizadas e a diferença clínica esperada
+  * Defina seu beta, alpha e o tamanho de efeito esperado
+  * Corra a um estatístico ou arrisque a sorte com o pacote "epicalc"
+
+---
+
+## Exemplo discutido
+
+Um pesquisador quer saber se um treinamento de "leitura dinâmica" aumenta a velocidade média de leitura de palavras. 
+* Tarefa: ler os sertões de Euclides da cunha
+* Medida: avaliar o tempo médio de leitura em horas
+* Grupo controle vs grupo "leitura dinâmica"
+
+---
+
+## Exemplo discutido (Cont.)
+
+* Alfa = 0.05
+* Poder = 0.80
+* Diferença entre médias esperada = 30 minutos (1/2 hora)
+* Qual o n necessário para esta diferença ser estatisticamente significafiva?
+
+---
+
+## Amostragem - "epicalc"
+
+Diversas funções para amostragem
+  * survey
+  * médias
+  * proporções
+  ...
+
+---
+
+## Uso da função n.for.2means
+
+
+```r
+n.for.2means(mu1 = 12, mu2 = 11.5, sd1 = 1, sd = 1, alpha = 0.05, power = 0.8)
+```
+
+```
+## 
+## Estimation of sample size for testing Ho: mu1==mu2 
+## Assumptions: 
+##  
+##      alpha = 0.05 
+##      power = 0.8 
+##      n2/n1 = 1 
+##        mu1 = 12 
+##        mu2 = 11.5 
+##        sd1 = 1 
+##        sd2 = 1 
+##  
+## Estimated required sample size: 
+##  
+##         n1 = 64 
+##         n2 = 64 
+##    n1 + n2 = 128 
+## 
+```
+
+
+---
+
+## Comparação entre grupos
+
+
+```r
+set.seed(1)  # controlando a randomização
+grupoE <- rnorm(n = 64, mean = 12, sd = 1)  # grupo experimental
+grupoC <- rnorm(n = 64, mean = 11.5, sd = 1)  # grupo controle
+testeTe <- t.test(grupoE, grupoC, var.equal = TRUE)  # teste t
+```
+
+
+---
+
+## Cálculo do efeito
+
+
+```r
+t <- testeTe$statistic[[1]]
+df <- testeTe$parameter[[1]]
+r <- sqrt(t^2/(t^2 + df))
+round(r, 3)
+```
+
+```
+## [1] 0.318
+```
+
+
+---
 
 ## Referências
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cálculo de poder e amostragem simples</title>
+  <title>O tamanho do seu p importa?</title>
   <meta charset="utf-8">
-  <meta name="description" content="Cálculo de poder e amostragem simples">
+  <meta name="description" content="O tamanho do seu p importa?">
   <meta name="author" content="Henrique Gomide">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
         <img src="assets/img/ninja.png">
       </aside>
       <hgroup class="auto-fadein">
-        <h1>Cálculo de poder e amostragem simples</h1>
+        <h1>O tamanho do seu p importa?</h1>
         <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
         <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
       </hgroup>
@@ -63,7 +63,7 @@
   </hgroup>
   <article>
     <pre><code>dados  &lt;- read.csv(file.choose(), header=TRUE, sep=&quot;,&quot;)
-library(pwr) # Basic functions for Power Analysis
+library(epicalc) # Funções utéis para epidemiologia
 </code></pre>
 
   </article>
@@ -76,7 +76,11 @@ library(pwr) # Basic functions for Power Analysis
   </hgroup>
   <article>
     <ul>
-<li></li>
+<li>O mantra p &lt; 0,05</li>
+<li>Alfa, Beta e Poder</li>
+<li>Amostragem</li>
+<li>Significância estatítica vs clínica</li>
+<li>Exemplo discutido</li>
 </ul>
 
   </article>
@@ -84,6 +88,20 @@ library(pwr) # Basic functions for Power Analysis
 </slide>
 
       <slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Significância estatística vs clínica</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Significância estatística não é a mesma coisa que a clínica!</li>
+<li>Um bom estudo deve ter bem definido a diferença clínica que se quer observar</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Meu querido p &lt; 0,05 (alfa)</h2>
   </hgroup>
@@ -97,7 +115,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-5" style="background:;">
+      <slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Alfa, Beta, Poder</h2>
   </hgroup>
@@ -113,7 +131,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-6" style="background:;">
+      <slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Tamanhos de efeito</h2>
   </hgroup>
@@ -129,7 +147,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-7" style="background:;">
+      <slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Tamanhos de efeito - pequeno</h2>
   </hgroup>
@@ -143,7 +161,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-8" style="background:;">
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Tamanhos de efeito - médio</h2>
   </hgroup>
@@ -157,7 +175,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-9" style="background:;">
+      <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Tamanhos de efeito - grande</h2>
   </hgroup>
@@ -171,27 +189,9 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-10" style="background:;">
-  <hgroup>
-    <h2>Amostragem</h2>
-  </hgroup>
-  <article>
-    <p>Para realizar amostragem (ou pedir para alguém fazê-la):</p>
-
-<ul>
-<li>Defina seu problema de pesquisa e suas hipotéses</li>
-<li>Defina as medidas que serão utilizadas e a diferença clínica esperada</li>
-<li>Defina seu beta, alpha e o tamanho de efeito esperado</li>
-<li>Corra a um estatístico ou arrisque a sorte com o pacote &quot;pwr&quot;&quot;</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
       <slide class="" id="slide-11" style="background:;">
   <hgroup>
-    <h2>O pacote pwr</h2>
+    <h2>Poder - O pacote pwr</h2>
   </hgroup>
   <article>
     <ul>
@@ -212,12 +212,144 @@ library(pwr) # Basic functions for Power Analysis
 
       <slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Função</h2>
+    <h2>Amostragem</h2>
   </hgroup>
   <article>
-    <h2>Referências</h2>
+    <p>Para realizar amostragem (ou pedir para alguém fazê-la):</p>
 
 <ul>
+<li>Defina seu problema de pesquisa e suas hipotéses</li>
+<li>Defina as medidas que serão utilizadas e a diferença clínica esperada</li>
+<li>Defina seu beta, alpha e o tamanho de efeito esperado</li>
+<li>Corra a um estatístico ou arrisque a sorte com o pacote &quot;epicalc&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Exemplo discutido</h2>
+  </hgroup>
+  <article>
+    <p>Um pesquisador quer saber se um treinamento de &quot;leitura dinâmica&quot; aumenta a velocidade média de leitura de palavras. </p>
+
+<ul>
+<li>Tarefa: ler os sertões de Euclides da cunha</li>
+<li>Medida: avaliar o tempo médio de leitura em horas</li>
+<li>Grupo controle vs grupo &quot;leitura dinâmica&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Exemplo discutido (Cont.)</h2>
+  </hgroup>
+  <article>
+    <ul>
+<li>Alfa = 0.05</li>
+<li>Poder = 0.80</li>
+<li>Diferença entre médias esperada = 30 minutos (1/2 hora)</li>
+<li>Qual o n necessário para esta diferença ser estatisticamente significafiva?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Amostragem - &quot;epicalc&quot;</h2>
+  </hgroup>
+  <article>
+    <p>Diversas funções para amostragem</p>
+
+<ul>
+<li>survey</li>
+<li>médias</li>
+<li>proporções
+...</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Uso da função n.for.2means</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">n.for.2means(mu1 = 12, mu2 = 11.5, sd1 = 1, sd = 1, alpha = 0.05, power = 0.8)
+</code></pre>
+
+<pre><code>## 
+## Estimation of sample size for testing Ho: mu1==mu2 
+## Assumptions: 
+##  
+##      alpha = 0.05 
+##      power = 0.8 
+##      n2/n1 = 1 
+##        mu1 = 12 
+##        mu2 = 11.5 
+##        sd1 = 1 
+##        sd2 = 1 
+##  
+## Estimated required sample size: 
+##  
+##         n1 = 64 
+##         n2 = 64 
+##    n1 + n2 = 128 
+## 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Comparação entre grupos</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">set.seed(1)  # controlando a randomização
+grupoE &lt;- rnorm(n = 64, mean = 12, sd = 1)  # grupo experimental
+grupoC &lt;- rnorm(n = 64, mean = 11.5, sd = 1)  # grupo controle
+testeTe &lt;- t.test(grupoE, grupoC, var.equal = TRUE)  # teste t
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Cálculo do efeito</h2>
+  </hgroup>
+  <article>
+    <pre><code class="r">t &lt;- testeTe$statistic[[1]]
+df &lt;- testeTe$parameter[[1]]
+r &lt;- sqrt(t^2/(t^2 + df))
+round(r, 3)
+</code></pre>
+
+<pre><code>## [1] 0.318
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+      <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Referências</h2>
+  </hgroup>
+  <article>
+    <ul>
 <li>Wright, D. B. (2003). Making friends with your data: Improving how statistics are conducted and  reported. British Journal of Educational Psychology, 73(1), 123.</li>
 <li>Goodwin, C. J. (2010). Research in psychology: methods and design. Hoboken, NJ: Wiley.</li>
 <li>Cohen, J. (1992). A power primer. Psychological bulletin, 112(1), 155.</li>
@@ -228,7 +360,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Obrigado</h2>
   </hgroup>
@@ -238,7 +370,7 @@ library(pwr) # Basic functions for Power Analysis
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-21" style="background:;">
   <hgroup>
     
   </hgroup>

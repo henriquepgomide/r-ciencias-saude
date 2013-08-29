@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Testes de hipóteses e efeito</title>
+  <title>Testes de hipóteses</title>
   <meta charset="utf-8">
-  <meta name="description" content="Testes de hipóteses e efeito">
+  <meta name="description" content="Testes de hipóteses">
   <meta name="author" content="Henrique Gomide">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
         <img src="assets/img/ninja.png">
       </aside>
       <hgroup class="auto-fadein">
-        <h1>Testes de hipóteses e efeito</h1>
+        <h1>Testes de hipóteses</h1>
         <h2>Curso Ninja de Estatística Aplicada com R para Ciências da Saúde</h2>
         <p>Henrique Gomide<br/>CREPEIA, PET - Psicologia</p>
       </hgroup>
@@ -168,7 +168,7 @@
     <h2>Exemplo - teste t</h2>
   </hgroup>
   <article>
-    <pre><code class="r">t.test(somaescala ~ v6, data = dados, var.equal = FALSE, )
+    <pre><code class="r">t.test(somaescala ~ v6, data = dados, var.equal = FALSE)
 </code></pre>
 
 <pre><code>## 
@@ -238,85 +238,6 @@
 
       <slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Tamanhos de efeito</h2>
-  </hgroup>
-  <article>
-    <ul>
-<li>É o tamanho da variabilidade da variável dependente que pode ser atribuída a variável independente (Cohen, 1992).</li>
-<li>Pode ser convertido em índice, &quot;d de Cohen&quot;.</li>
-<li>Recomendação da APA para descrever o tamanho do efeito das análises realizadas.</li>
-<li>São utilizados para determinar tamanhos de amostras com outros indicadores como o alfa e beta.</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-13" style="background:;">
-  <hgroup>
-    <h2>Tamanhos de efeito - pequeno</h2>
-  </hgroup>
-  <article>
-    <pre><code class="r">cohen.d(0.3)  # pequeno
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-14" style="background:;">
-  <hgroup>
-    <h2>Tamanhos de efeito - médio</h2>
-  </hgroup>
-  <article>
-    <pre><code class="r">cohen.d(0.5)  # médio
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>Tamanhos de efeito - grande</h2>
-  </hgroup>
-  <article>
-    <pre><code class="r">cohen.d(0.8)  # grande
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h2>O pacote pwr</h2>
-  </hgroup>
-  <article>
-    <ul>
-<li>O pacote permite o cálculo de poder de testes utilizados como:
-
-<ul>
-<li>teste t</li>
-<li>anova</li>
-<li>qui-quadrado</li>
-<li>correlação simples</li>
-<li>modelos lineares</li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-17" style="background:;">
-  <hgroup>
     <h2>Referências</h2>
   </hgroup>
   <article>
@@ -331,7 +252,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-18" style="background:;">
+      <slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>Obrigado</h2>
   </hgroup>
@@ -341,7 +262,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-19" style="background:;">
+      <slide class="" id="slide-14" style="background:;">
   <hgroup>
     
   </hgroup>

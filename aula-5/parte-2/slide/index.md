@@ -1,5 +1,5 @@
 ---
-title       : Testes de hipóteses e efeito
+title       : Testes de hipóteses 
 subtitle    : Curso Ninja de Estatística Aplicada com R para Ciências da Saúde
 author      : Henrique Gomide
 job         : CREPEIA, PET - Psicologia
@@ -74,7 +74,7 @@ Rejeitar Ho              | Erro tipo I  (alfa)       | Decisão Correta (1-beta)
 ## Exemplo - teste t
 
 ```r
-t.test(somaescala ~ v6, data = dados, var.equal = FALSE, )
+t.test(somaescala ~ v6, data = dados, var.equal = FALSE)
 ```
 
 ```
@@ -117,65 +117,6 @@ Testes estatísticos podem adotar como Ho:
 * Beta é a probabiildade de falhar em rejeitar Ho quando ele é de fato falso
 * Poder é 1-beta
 * Estes paramêtros são importantes em determinar o tamanho de sua amostra e o tamanho da diferença que o teste estatístico pode detectar.
-
----
-
-## Tamanhos de efeito
-
-* É o tamanho da variabilidade da variável dependente que pode ser atribuída a variável independente (Cohen, 1992).
-* Pode ser convertido em índice, "d de Cohen".
-* Recomendação da APA para descrever o tamanho do efeito das análises realizadas.
-* São utilizados para determinar tamanhos de amostras com outros indicadores como o alfa e beta.
-
----
-
-## Tamanhos de efeito - pequeno
-
-
-
-
-
-```r
-cohen.d(0.3)  # pequeno
-```
-
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
-
-
----
-
-## Tamanhos de efeito - médio
-
-
-```r
-cohen.d(0.5)  # médio
-```
-
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
-
-
----
-
-## Tamanhos de efeito - grande
-
-
-```r
-cohen.d(0.8)  # grande
-```
-
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
-
-
----
-
-## O pacote pwr
-
-* O pacote permite o cálculo de poder de testes utilizados como:
-  - teste t
-  - anova
-  - qui-quadrado
-  - correlação simples
-  - modelos lineares
 
 ---
 
