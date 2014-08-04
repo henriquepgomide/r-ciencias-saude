@@ -21,49 +21,13 @@ Downloads
 ## Carregando o banco da aula e pacotes
 
 
-```
-## Loading required package: psych
-```
-
-```
-## Loading required package: epicalc
-```
-
-```
-## Loading required package: foreign
-```
-
-```
-## Loading required package: survival
-```
-
-```
-## Loading required package: splines
-```
-
-```
-## Loading required package: MASS
-```
-
-```
-## Loading required package: nnet
-```
-
-```
-## Attaching package: 'epicalc'
-```
-
-```
-## The following object is masked from 'package:psych':
-## 
-## alpha
-```
 
 
 ```
 dados  <- read.csv(file.choose(), header=TRUE, sep=",")
-require(ggplot2)
-require(lattice)
+require(epicalc)
+require(psych)
+
 ```
 
 ---
@@ -95,33 +59,20 @@ require(lattice)
 
 ---
 
+
 ## Distribuição normal
 * Ex. baseado nos escores da escala de auto estima
 
-```r
-autoMean <- mean(dados$somaescala, na.rm = TRUE)
-autoSd <- sd(dados$somaescala, na.rm = TRUE)
-x <- 17:35
-y <- dnorm(x, mean = autoMean, sd = autoSd)
-```
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 
 ---
 
-## Distribuição normal
-
-```r
-plot(x = x, y = y, type = "l", col = "blue")
-```
-
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
-
-
----
 
 ## Erro padrão
 * É utilizado para identificar o quão precisa é a estimativa da média da população.
   * Ex. Simulação da população a partir dos escores da escala de auto-estima.
+  
 
 ```r
 simAe <- rnorm(1000, mean = autoMean, sd = autoSd)  # simulação
@@ -131,8 +82,8 @@ describe(simAe)
 ```
 
 ```
-##   var    n  mean   sd median trimmed  mad   min   max range  skew kurtosis
-## 1   1 1000 26.09 2.65  26.09   26.11 2.66 17.24 33.91 16.67 -0.06    -0.13
+##   var    n  mean   sd median trimmed  mad   min   max range skew kurtosis
+## 1   1 1000 26.12 2.65  26.03    26.1 2.57 18.17 34.56 16.38 0.05     0.05
 ##     se
 ## 1 0.08
 ```
@@ -148,8 +99,10 @@ describe(amostra50)
 ```
 
 ```
-##   var  n mean  sd median trimmed  mad   min   max range skew kurtosis   se
-## 1   1 50 26.1 2.3  25.69   26.04 2.33 21.91 31.33  9.42 0.19    -0.75 0.33
+##   var  n  mean   sd median trimmed  mad   min   max range  skew kurtosis
+## 1   1 50 25.93 3.05  25.99   25.99 3.66 18.58 32.28 13.71 -0.16    -0.64
+##     se
+## 1 0.43
 ```
 
 ```r
@@ -157,10 +110,10 @@ describe(amostra100)
 ```
 
 ```
-##   var   n  mean   sd median trimmed  mad   min   max range  skew kurtosis
-## 1   1 100 25.97 2.85     26   25.99 3.08 19.78 33.78    14 -0.01    -0.51
+##   var   n  mean   sd median trimmed  mad  min   max range  skew kurtosis
+## 1   1 100 26.38 2.67  26.28   26.39 2.43 19.3 33.44 14.13 -0.04     0.07
 ##     se
-## 1 0.29
+## 1 0.27
 ```
 
 
@@ -184,7 +137,7 @@ c(lower, upper)
 ```
 
 ```
-## [1] 25.46 26.74
+## [1] 25.08 26.77
 ```
 
 
@@ -199,8 +152,8 @@ ci(amostra50)
 ```
 
 ```
-##   n mean  sd     se lower95ci upper95ci
-##  50 26.1 2.3 0.3253     25.45     26.75
+##   n  mean    sd     se lower95ci upper95ci
+##  50 25.93 3.054 0.4319     25.06      26.8
 ```
 
 

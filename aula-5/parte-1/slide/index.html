@@ -62,38 +62,10 @@
     <h2>Carregando o banco da aula e pacotes</h2>
   </hgroup>
   <article>
-    <pre><code>## Loading required package: psych
-</code></pre>
+    <pre><code>dados  &lt;- read.csv(file.choose(), header=TRUE, sep=&quot;,&quot;)
+require(epicalc)
+require(psych)
 
-<pre><code>## Loading required package: epicalc
-</code></pre>
-
-<pre><code>## Loading required package: foreign
-</code></pre>
-
-<pre><code>## Loading required package: survival
-</code></pre>
-
-<pre><code>## Loading required package: splines
-</code></pre>
-
-<pre><code>## Loading required package: MASS
-</code></pre>
-
-<pre><code>## Loading required package: nnet
-</code></pre>
-
-<pre><code>## Attaching package: &#39;epicalc&#39;
-</code></pre>
-
-<pre><code>## The following object is masked from &#39;package:psych&#39;:
-## 
-## alpha
-</code></pre>
-
-<pre><code>dados  &lt;- read.csv(file.choose(), header=TRUE, sep=&quot;,&quot;)
-require(ggplot2)
-require(lattice)
 </code></pre>
 
   </article>
@@ -166,31 +138,13 @@ require(lattice)
 <li>Ex. baseado nos escores da escala de auto estima</li>
 </ul>
 
-<pre><code class="r">autoMean &lt;- mean(dados$somaescala, na.rm = TRUE)
-autoSd &lt;- sd(dados$somaescala, na.rm = TRUE)
-x &lt;- 17:35
-y &lt;- dnorm(x, mean = autoMean, sd = autoSd)
-</code></pre>
+<p><img src="figure/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
       <slide class="" id="slide-8" style="background:;">
-  <hgroup>
-    <h2>Distribuição normal</h2>
-  </hgroup>
-  <article>
-    <pre><code class="r">plot(x = x, y = y, type = &quot;l&quot;, col = &quot;blue&quot;)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Erro padrão</h2>
   </hgroup>
@@ -209,8 +163,8 @@ amostra100 &lt;- sample(simAe, size = 100)  #amostra aleatório de n = 100
 describe(simAe)
 </code></pre>
 
-<pre><code>##   var    n  mean   sd median trimmed  mad   min   max range  skew kurtosis
-## 1   1 1000 26.09 2.65  26.09   26.11 2.66 17.24 33.91 16.67 -0.06    -0.13
+<pre><code>##   var    n  mean   sd median trimmed  mad   min   max range skew kurtosis
+## 1   1 1000 26.12 2.65  26.03    26.1 2.57 18.17 34.56 16.38 0.05     0.05
 ##     se
 ## 1 0.08
 </code></pre>
@@ -219,7 +173,7 @@ describe(simAe)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-10" style="background:;">
+      <slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Erro padrão (cont.)</h2>
   </hgroup>
@@ -229,24 +183,26 @@ describe(simAe)
 <pre><code class="r">describe(amostra50)
 </code></pre>
 
-<pre><code>##   var  n mean  sd median trimmed  mad   min   max range skew kurtosis   se
-## 1   1 50 26.1 2.3  25.69   26.04 2.33 21.91 31.33  9.42 0.19    -0.75 0.33
+<pre><code>##   var  n  mean   sd median trimmed  mad   min   max range  skew kurtosis
+## 1   1 50 25.93 3.05  25.99   25.99 3.66 18.58 32.28 13.71 -0.16    -0.64
+##     se
+## 1 0.43
 </code></pre>
 
 <pre><code class="r">describe(amostra100)
 </code></pre>
 
-<pre><code>##   var   n  mean   sd median trimmed  mad   min   max range  skew kurtosis
-## 1   1 100 25.97 2.85     26   25.99 3.08 19.78 33.78    14 -0.01    -0.51
+<pre><code>##   var   n  mean   sd median trimmed  mad  min   max range  skew kurtosis
+## 1   1 100 26.38 2.67  26.28   26.39 2.43 19.3 33.44 14.13 -0.04     0.07
 ##     se
-## 1 0.29
+## 1 0.27
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-11" style="background:;">
+      <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Intervalo de confiança</h2>
   </hgroup>
@@ -260,7 +216,7 @@ describe(simAe)
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-12" style="background:;">
+      <slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>Intervalo de confiança para corajosos</h2>
   </hgroup>
@@ -273,14 +229,14 @@ upper &lt;- mean(amostra50) + 1.96 * se
 c(lower, upper)
 </code></pre>
 
-<pre><code>## [1] 25.46 26.74
+<pre><code>## [1] 25.08 26.77
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-13" style="background:;">
+      <slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Intervalo de confiança para peguiçosos</h2>
   </hgroup>
@@ -291,15 +247,15 @@ c(lower, upper)
 ci(amostra50)
 </code></pre>
 
-<pre><code>##   n mean  sd     se lower95ci upper95ci
-##  50 26.1 2.3 0.3253     25.45     26.75
+<pre><code>##   n  mean    sd     se lower95ci upper95ci
+##  50 25.93 3.054 0.4319     25.06      26.8
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-      <slide class="" id="slide-14" style="background:;">
+      <slide class="" id="slide-13" style="background:;">
   <hgroup>
     
   </hgroup>

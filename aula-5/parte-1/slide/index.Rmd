@@ -22,14 +22,12 @@ Downloads
 
 ```{r echo = FALSE}
 dados  <- read.csv("~/Dropbox/cursos/r-psicologia/aula-4/autoestima.csv")
-require(psych)
-require(epicalc)
 ```
 
 ```
 dados  <- read.csv(file.choose(), header=TRUE, sep=",")
-require(ggplot2)
-require(lattice)
+require(epicalc)
+require(psych)
 
 ```
 
@@ -62,28 +60,25 @@ require(lattice)
 
 ---
 
+
 ## Distribuição normal
 * Ex. baseado nos escores da escala de auto estima
-```{r echo = TRUE}
+
+```{r echo = FALSE}
 autoMean  <- mean(dados$somaescala, na.rm = TRUE)
 autoSd  <- sd(dados$somaescala, na.rm = TRUE)
 x  <- 17:35
 y  <- dnorm(x, mean = autoMean, sd = autoSd)
-
-```
-
----
-
-## Distribuição normal
-```{r}
 plot(x = x, y = y, type="l", col = "blue")
 ```
 
 ---
 
+
 ## Erro padrão
 * É utilizado para identificar o quão precisa é a estimativa da média da população.
   * Ex. Simulação da população a partir dos escores da escala de auto-estima.
+  
 ```{r}
 simAe  <- rnorm(1000, mean = autoMean, sd = autoSd) # simulação
 amostra50  <- sample(simAe, size= 50) # amostra aleatório de n = 50
