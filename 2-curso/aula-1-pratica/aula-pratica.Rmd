@@ -1,0 +1,176 @@
+---
+title: "R - Operações Básicas - Prática"
+author: "Henrique Pinto Gomide"
+subtitle: Curso Ninja de R para Ciências da Saúde
+output:
+  ioslides_presentation:
+    font-family: Ubuntu
+    font-import: http://fonts.googleapis.com/css?family=Ubuntu
+    logo: ninja.png
+    widescreen: yes
+  beamer_presentation: default
+---
+
+## Objetivo da aula
+
+Ao final desta aula, você aprenderá:
+
+- Abrir um banco de dados nos formatos csv e txt
+- Usar funções e operações fundamentais para análise dos dados
+- Separar o banco em subgrupos para analises posteriores.
+
+## Arquivos para esta aula
+
+- [Banco de dados](https://www.dropbox.com/s/jb8kmew400oi1rt/autoestima.csv?dl=0)
+- [Dicionário do banco](https://www.dropbox.com/s/5q55tsy4gvbt005/descricao-banco-auto-estima.pdf?dl=0)
+- [Cola para funções do R](http://cran.r-project.org/doc/contrib/Short-refcard.pdf)
+
+
+## Como abrir banco de dados
+
+A maior parte dos bancos estão nos formatos: 
+
+- txt - texto
+- csv (*Comma Separated Values*) - texto separados por vírgula
+
+## Outros formatos
+
+Existem infinitos formatos de bancos de dados.
+
+- *foreign*, *Hmisc* são pacotes que podem ajudá-lo.
+- Não deixe de procurar no são google!
+
+## Defina seu diretório de trabalho
+
+- Lembre-se sempre de definir um diretório de trabalho. 
+- Seu arquivo com o banco deve estar dentro deste diretório.
+- Ao trabalhar dentro de um projeto do RStudio, o diretório de trabalho é configurado automaticamente.
+
+Ex:
+```{r}
+setwd("~/Dropbox/cursos/r-psicologia/2-curso/aula-1-pratica")
+```
+
+## Abrir o banco
+
+Para abrir o banco, use a função:
+
+- *read.csv*
+```{r}
+str(read.csv)
+```
+
+- ! Lembre-se de atribuir a um objeto, ex: ```dados  <- read.csv("meubanco.csv")```
+
+## Atividade 1
+
+Abra o banco *autoestima.csv*.
+
+## Resposta 
+
+```{r}
+dados <- read.csv("autoestima.csv")
+```
+
+## Função *names*
+
+Lista os nomes das variáveis.
+```{r}
+names(dados)
+```
+
+! Os nomes são estranhos! Não deixe de consultar o dicionário do banco!!
+
+## Função *str*
+
+Mostra a estrutura de um objeto
+```{r}
+str(dados)
+```
+
+## Função *head* e *tail*
+
+Mostra os primeiros e últimos valores, respectivamente
+```{r}
+head(dados)
+```
+
+## Operações comuns em bancos de dados
+
+Selecionar linhas ou colunas,
+
+- objeto[linhas , colunas]
+
+Ex:
+```{r}
+dados[1:5, ] # Seleciona as linhas de 1 a cinco e lista todas as variáveis
+```
+
+## Outras formas
+
+- dados[10, "v6"] - Lista a linha 10, variável v6 do banco.
+- dados[10:20, c("v6","v7")] - Lista as linhas 10 até 20, variáveis v6 ou v7.
+- dados$v10 - lista todos os casos da variável v10.
+
+
+## Exercício 2 
+
+Liste as três primeiras variáveis das linhas 1 até 10 do banco.
+
+## Resposta 2 
+
+```{r}
+dados[1:10, 1:3] # Seleciona as linhas de 1 a 5 e listar todas as variáveis
+```
+
+Outra resposta: dados[1:10, c("X","v1","v2")]
+
+## Dividir a análise segundo um critério lógico
+
+Ex: Usar dados de pessoas maiores de 18 anos.
+```{r}
+dadosMaior  <- subset(dados, dados$v3 >= 18)
+```
+
+## Dividir a análise segundo um critério lógico (Cont)
+
+Selecione as pessoas do sexo masculino e maiores que 18 anos
+```{r}
+dados2  <- subset(dados, dados$v3 >= 18 & dados$v6 == "Feminino")
+```
+
+## Exercício 3
+
+Selecione um banco com pessoas que possuem Ensino Superior Incompleto e sejam maiores que 22 anos.
+
+## Resposta 3 
+
+```{r}
+dados2  <- subset(dados, dados$v3 >= 22 & dados$v8 == "Ensino Superior Incompleto")
+```
+
+## Função *table*
+
+Tabula o número de elementos.
+```{r}
+table(dados$v7)
+```
+
+## Função *table* (Cont.)
+
+```{r}
+table(dados$v7 != "Solteiro(a)")
+```
+
+
+## Exercício 4
+
+Quantas pessoas possuem mais de 20 anos?
+
+
+## Resposta
+
+```{r}
+table(dados$v3 > 20)
+```
+

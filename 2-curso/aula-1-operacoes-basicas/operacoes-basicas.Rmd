@@ -1,0 +1,72 @@
+---
+title: "R - Operações Básicas"
+author: "Henrique Pinto Gomide"
+subtitle: Curso Ninja de R para Ciências da Saúde
+output:
+  ioslides_presentation:
+    font-family: Ubuntu
+    font-import: http://fonts.googleapis.com/css?family=Ubuntu
+    logo: ninja.png
+    widescreen: yes
+  beamer_presentation: default
+---
+
+## Objetivo da aula
+
+Ao final desta aula, você deverá saber:
+- Somar, dividir, multiplicar...
+- Realizar comparações lógicas
+
+
+## Objetos para exercícios
+
+```{r}
+a  <- 2
+b  <- 5
+c <- c(1,2,5.3,6,-2,4)
+```
+
+
+## Operações matemáticas
+
+```{r}
+a + b; a^b; log(a); exp(a); sqrt(a)
+```
+
+
+## Lista de operações
+
+Operador     Descrição 
+---------    -----------
++            Adição
+-            Subtração  
+*            Multiplicação
+/            Divisão
+** ou ^      Exponenciação
+
+
+Referência: [Stat Methods](http://www.statmethods.net/management/operators.html)
+
+## Operações Lógicas
+
+```{r}
+a != b
+a == b
+b <= a + 2
+```
+
+
+## Lista de operadores lógicos
+
+Operador     Descrição 
+---------    -----------
+<            Menor que
+<=           Menor ou igual   
+>            Maior
+>=           Maior ou igual
+==           Igual a 
+!=           Diferente que
+x | y        Ou
+x & y        E
+
+Referência: [Stat Methods](http://www.statmethods.net/input/datatypes.html)

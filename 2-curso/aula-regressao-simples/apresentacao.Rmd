@@ -1,0 +1,146 @@
+---
+title: "Regressão Simples"
+author: "Henrique Pinto Gomide"
+date: "08-10-2014"
+output: ioslides_presentation
+subtitle: Curso Ninja de R para Ciências da Saúde
+logo: ninja.png
+---
+
+## Antes de começar
+
+- Esta aula é baseada no material do site [OpenIntro](http://www.openintro.org/stat/textbook.php).
+- O laboratório foi traduzido pelo Professor Erikson Kaszubowski. Larga a mão de ser ruim, agradeça-o.
+- Downloads
+  + [Banco de dados](http://www.openintro.org/stat/data/mlb11.RData)
+  + [Texto base](http://www.openintro.org/download.php?file=os2_lab_7A-port&referrer=/stat/labs/os2_labs-port.php)
+
+
+## Motivação
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/o8Bk0t7bYVQ?rel=0" frameborder="0" allowfullscreen></iframe>
+
+## Abrir banco de dados
+
+```{r}
+download.file("http://www.openintro.org/stat/data/mlb11.RData", destfile="mlb11.RData")
+load("mlb11.RData")
+```
+
+## Exercícios - 1
+
+Que tipo de gráfico você utilizaria para mostrar a relação entre *runs* (pontos) e alguma outra variável numérica?  Crie um gráfico dessa relação utilizando a variável *at_bats* como preditora. 
+
+A relação parece ser linear? Se você soubesse o valor de *at_bats* (vez ao taco) de um time, você se sentiria confiante para utilizar um modelo linear para predizer o número de pontos (*runs*)?
+
+## Respostas
+
+```{r}
+plot(mlb11$at_bats, mlb11$runs)
+```
+
+R: Parece que sim...
+
+
+## Exercícios - 2
+
+Qual o coeficiente de correlação, ou seja, a força de associação destas duas variáveis?
+
+
+## Resposta
+
+```{r}
+cor(mlb11$at_bats, mlb11$runs)
+```
+
+
+## Escolher uma melhor linha
+
+```{r}
+plot_ss(mlb11$at_bats, mlb11$runs, showSquares = TRUE)
+```
+
+
+## Função *lm*
+
+```{r}
+m1 <- lm(runs ~ at_bats, data = mlb11)
+```
+
+
+## Resultados
+
+```{r}
+summary(m1)
+```
+
+
+## Exercício
+
+1. Ajuste um modelo com a variável *homeruns* para predizer *runs*. Escreva a equação da linha. O que o coeficiente angular nos diz?
+
+## Resposta
+
+```{r}
+m2 <- lm(runs ~ homeruns, data = mlb11)
+summary(m2)
+```
+
+y  =  415,2389 + 1,8345 * homeruns
+
+## Predição e erro de predição
+
+```{r}
+plot(mlb11$runs ~ mlb11$at_bats)
+abline(m1)
+```
+
+## Exercício
+
+Se o técnico do time (dificilmente o Joel Santanta) visse a linha de regressão dos mínimos quadrados, quantos pontos (runs) ele prediria para um time com 5.578 vezes ao taco (*at_bat*)?
+
+Esse valor superestima ou subestima o valor real? Por quanto erra?
+
+## Resposta
+
+Fórmula
+runs ~ -2789.2429 + 0.6305 * a_tbats
+```{r}
+runs  <- -2789.2429 + 0.6305 * 5578
+runs
+```
+
+## Diagnósticos do modelo - Linearidade
+
+
+```{r}
+plot(m1$residuals ~ mlb11$at_bats)
+abline(h = 0, lty = 3)
+```
+
+Exercicio: Há algum padrão no gráfico?
+
+## Diagnósticos do modelo - Resíduos distribuídos normalmente
+
+- Parte do pressuposto: Constructo = Mensuração + Erro
+- A condição de distribuição normal está atendida?
+
+
+## Resíduos distribuídos normalmente
+
+```{r}
+par(mfrow = c(1,2))
+hist(m1$residuals)
+qqnorm(m1$residuals)
+qqline(m1$residuals)
+```
+
+
+## Diagnósticos do modelo - Variância
+
+```{r}
+plot(m1$residuals ~ mlb11$at_bats)
+abline(h = 0, lty = 3)
+```
+
+A variância parece ser constante?
